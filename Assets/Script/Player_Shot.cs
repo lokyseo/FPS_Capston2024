@@ -28,7 +28,7 @@ public class Player_Shot : MonoBehaviour
 
     void Start()
     {
-        weaponType = 0;
+        weaponType = 2;
         maxBulletCount = 6;
         curBulletCount = maxBulletCount;
         fire_anim = Gun.GetComponent<Animator>();
@@ -114,12 +114,12 @@ public class Player_Shot : MonoBehaviour
                 if (zoom_Image.gameObject.activeSelf)
                 {
                     zoom_Image.gameObject.SetActive(false);
-                    this.transform.position += new Vector3(0, 0, -1);
+                    this.transform.localPosition += new Vector3(0, 0, -1);
                 }
                 else
                 {
                     zoom_Image.gameObject.SetActive(true);
-                    this.transform.position += new Vector3(0, 0, 1);
+                    this.transform.localPosition += new Vector3(0, 0, 1);
                 }
             }
             else
@@ -127,12 +127,12 @@ public class Player_Shot : MonoBehaviour
                 if (zoom_x4Image.gameObject.activeSelf)
                 {
                     zoom_x4Image.gameObject.SetActive(false);
-                    this.transform.position += new Vector3(0, 0, -8);
+                    this.transform.localPosition += new Vector3(0, 0, -8);
                 }
                 else
                 {
                     zoom_x4Image.gameObject.SetActive(true);
-                    this.transform.position += new Vector3(0, 0, 8);
+                    this.transform.localPosition += new Vector3(0, 0, 8);
                 }
             }
             
