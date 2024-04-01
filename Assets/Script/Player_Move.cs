@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player_Move : MonoBehaviour
 {
     [SerializeField]
     private float walkSpeed;
 
-    [SerializeField]
-    private float lookSensitivity_H;
-    [SerializeField]
-    private float lookSensitivity_V;
+    public float lookSensitivity_H;
+    public float lookSensitivity_V;
     private float test;
 
     [SerializeField]
@@ -22,14 +21,16 @@ public class Player_Move : MonoBehaviour
     private Camera theCamera;
     private Rigidbody myRigid;
 
-
+    
     void Start()
     {
+        
+
         myRigid = GetComponent<Rigidbody>(); 
 
-        Cursor.lockState = CursorLockMode.Locked;   // 마우스 커서를 화면 안에서 고정
-        Cursor.visible = false;                     // 마우스 커서를 보이지 않도록 설정
+        
     }
+
     void Update()  
     {
         Move();                 // 1️ 키보드 입력에 따라 이동
@@ -74,4 +75,6 @@ public class Player_Move : MonoBehaviour
         //Debug.Log(myRigid.rotation);  // 쿼터니언
         //Debug.Log(myRigid.rotation.eulerAngles); // 벡터
     }
+
+    
 }

@@ -9,20 +9,23 @@ public class Spawn_Sphere : MonoBehaviour
     public GameObject target_Sphere;
 
     int count_Spawn;
-    public static int count_Score;
+    public int count_Score;
 
     float spawnInterval;
 
-    public bool isReady; 
+    public bool isReady;
     public bool isSpawnStart;//스폰 시작
     public bool iscoroutine;
+
+    public float spawnLevel;
 
     void Start()
     {
         timeText.text = "";
         count_Spawn = 20;
         count_Score = 0;
-        spawnInterval = 2.0f;
+        spawnLevel = 2.0f;
+        spawnInterval = spawnLevel;
         isReady = false;
         isSpawnStart = false;
         iscoroutine = false;
@@ -30,9 +33,9 @@ public class Spawn_Sphere : MonoBehaviour
 
     void Update()
     {
-        if(isReady)
+        if (isReady)
         {
-            if(!iscoroutine)
+            if (!iscoroutine)
             {
                 StartCoroutine("ReadyToStart");
             }
@@ -46,11 +49,11 @@ public class Spawn_Sphere : MonoBehaviour
             count_Score = 0;
             StopCoroutine("ReadyToStart");
             this.GetComponent<Renderer>().material.color = Color.green;
-            timeText.text = "";
+
         }
 
         if (isSpawnStart)
-        {          
+        {
             spawnInterval -= Time.deltaTime;
             timeText.text = "점수 : " + count_Score.ToString() + "\t 남음 : " + count_Spawn.ToString();
 
@@ -63,7 +66,7 @@ public class Spawn_Sphere : MonoBehaviour
 
                     Instantiate(target_Sphere,
                         new Vector3(Random.Range(-15.0f, 15.0f), Random.Range(0, 10.0f), transform.position.z), Quaternion.identity);
-                    spawnInterval = 2.0f;
+                    spawnInterval = spawnLevel;
                 }
                 else
                 {
@@ -79,24 +82,26 @@ public class Spawn_Sphere : MonoBehaviour
 
             }
         }
-       
+
     }
 
     IEnumerator ReadyToStart()
     {
         iscoroutine = true;
 
-        timeText.text = "3";
+        timeText.text = "";
+
+        timeText.text = "\t 3";
         yield return new WaitForSeconds(1.0f);
-        timeText.text = "2";
+        timeText.text = "\t 2";
         yield return new WaitForSeconds(1.0f);
-        timeText.text = "1";
+        timeText.text = "\t 1";
         yield return new WaitForSeconds(1.0f);
         timeText.text = "Start";
         yield return new WaitForSeconds(1.0f);
         timeText.text = "점수 : 0\t 남음 : 20";
 
-        
+
         isSpawnStart = true;
 
     }
