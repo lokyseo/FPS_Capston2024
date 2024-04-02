@@ -42,14 +42,17 @@ public class Player_Move : MonoBehaviour
 
     private void Move()
     {
-        float _moveDirX = Input.GetAxisRaw("Horizontal");
-        float _moveDirZ = Input.GetAxisRaw("Vertical");
-        Vector3 _moveHorizontal = transform.right * _moveDirX;
-        Vector3 _moveVertical = transform.forward * _moveDirZ;
+       float _moveDirX = Input.GetAxisRaw("Horizontal");
+       float _moveDirZ = Input.GetAxisRaw("Vertical");
+       Vector3 _moveHorizontal = transform.right * _moveDirX;
+       Vector3 _moveVertical = transform.forward * _moveDirZ;
+       
+       Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * walkSpeed;
+       
+       //myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);
 
-        Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * walkSpeed;
-
-        myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);
+        
+        myRigid.velocity = _velocity;
     }
 
     private void CameraRotation()
