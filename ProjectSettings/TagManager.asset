@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Target
   - LevelTrigger
+  - Head
   layers:
   - Default
   - TransparentFX

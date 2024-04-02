@@ -98,6 +98,11 @@ public class Player_Shot : MonoBehaviour
                     hit_Image.color = new Color(1, 1, 1, 1);
                 }
 
+                if (hitData.transform.tag == "Head")
+                {
+                    hit_Image.color = new Color(1, 0, 0, 1);
+                }
+
                 if (hitData.transform.name.Contains("Sphere"))
                 {
                     Destroy(hitData.transform.gameObject);
