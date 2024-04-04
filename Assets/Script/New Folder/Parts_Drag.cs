@@ -39,7 +39,8 @@ public class Parts_Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnDrag(PointerEventData eventdata)
     {
-        transform.position = Input.mousePosition;
+        //transform.localPosition = Input.mousePosition;
+        transform.position = eventdata.position;
     }
 
     public void OnEndDrag(PointerEventData eventdata)
