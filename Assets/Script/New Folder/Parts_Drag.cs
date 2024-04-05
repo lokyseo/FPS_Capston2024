@@ -8,12 +8,12 @@ public class Parts_Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     // 아이템 등록 스트립트
 
     public static GameObject saveGameObject;
-
-    Vector3 startPosition;
+    public static Vector3 startPosition;
+    public static Transform startParent;
+    public static float property;
 
     [SerializeField]
     Transform onDragParent;
-    public Transform startParent;
 
     void Start()
     {
@@ -29,9 +29,10 @@ public class Parts_Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         saveGameObject = this.gameObject;
 
-        startPosition = transform.position;
+        startPosition = this.transform.position;
         startParent = this.transform.parent;
 
+        property = this.GetComponent<Parts_Porperty>().rand_Property;
         this.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
         transform.SetParent(onDragParent);
@@ -48,7 +49,8 @@ public class Parts_Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         saveGameObject = null;
         this.GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-        if(transform.parent == onDragParent)
+        property = 0;
+        if (transform.parent == onDragParent)
         {
             transform.position = startPosition;
             transform.SetParent(startParent);

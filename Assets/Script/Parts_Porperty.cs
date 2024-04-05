@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class Parts_Porperty : MonoBehaviour
 {
-    int rand_parts;
-    int rand_Property;
+    public float rand_parts;
+    public float rand_Property;
     public string parts_str, property_str;
     void Start()
     {
@@ -43,12 +43,5 @@ public class Parts_Porperty : MonoBehaviour
     void Update()
     {
     }
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        Debug.Log("Enter");
-    }
-    void OnMouseEnter()
-    {
-        Debug.Log("¿Ã¶ó¿È");
-    }
+  
 }

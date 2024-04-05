@@ -7,6 +7,10 @@ TagManager:
   - Target
   - LevelTrigger
   - Head
+  - Bullet_Parts
+  - BulletBox_Parts
+  - Aim_Parts
+  - Inventory
   layers:
   - Default
   - TransparentFX
