@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Slot_Drag : MonoBehaviour, IDropHandler
 {
-    
+
     GameObject Icon()
     {
         if (transform.childCount > 0)
@@ -59,6 +59,7 @@ public class Slot_Drag : MonoBehaviour, IDropHandler
                 {
                     Icon().transform.position = Parts_Drag.startPosition;
                     Icon().transform.SetParent(Parts_Drag.startParent);
+                    //property = Icon().GetComponent<Parts_Porperty>().rand_Property;
 
                     Parts_Drag.saveGameObject.transform.SetParent(this.transform);
                     Parts_Drag.saveGameObject.transform.position = transform.position;
