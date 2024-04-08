@@ -31,6 +31,6 @@ public class LobbyManager : MonoBehaviour
     }
     public void Inhencement()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Inhence");
     }
 }

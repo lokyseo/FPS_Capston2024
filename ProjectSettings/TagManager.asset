@@ -11,6 +11,7 @@ TagManager:
   - BulletBox_Parts
   - Aim_Parts
   - Inventory
+  - handle_Parts
   layers:
   - Default
   - TransparentFX
