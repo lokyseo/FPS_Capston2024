@@ -16,7 +16,7 @@ public class Player_Shot : MonoBehaviour
     [Header("게임 오브젝트")]
     public GameObject spawnSphere;
     public GameObject sphere;
-    public GameObject Gun;
+    public GameObject anim_Gun;
 
     public ParticleSystem gunFire;
     Animator fire_anim;
@@ -31,7 +31,7 @@ public class Player_Shot : MonoBehaviour
         weaponType = 2;
         maxBulletCount = 6;
         curBulletCount = maxBulletCount;
-        fire_anim = Gun.GetComponent<Animator>();
+        fire_anim = anim_Gun.GetComponent<Animator>();
     }
 
     void Update()
@@ -41,7 +41,7 @@ public class Player_Shot : MonoBehaviour
         {
             curBulletCount--;
             textbulletCount.text = curBulletCount + " / " + maxBulletCount;
-            //fire_anim.SetTrigger("IsFire");
+            fire_anim.SetTrigger("isGunShot");
             gunFire.Play();
 
             Ray ray = new Ray(transform.position, transform.forward);
@@ -147,6 +147,7 @@ public class Player_Shot : MonoBehaviour
         {
             curBulletCount = maxBulletCount;
             textbulletCount.text = curBulletCount + " / " + maxBulletCount;
+            fire_anim.SetTrigger("isGunReload");
 
         }
     }
