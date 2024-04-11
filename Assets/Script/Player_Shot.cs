@@ -41,7 +41,7 @@ public class Player_Shot : MonoBehaviour
         {
             curBulletCount--;
             textbulletCount.text = curBulletCount + " / " + maxBulletCount;
-            fire_anim.SetTrigger("IsFire");
+            //fire_anim.SetTrigger("IsFire");
             gunFire.Play();
 
             Ray ray = new Ray(transform.position, transform.forward);
