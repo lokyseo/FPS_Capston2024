@@ -32,7 +32,16 @@ public class Parts_Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         startPosition = this.transform.position;
         startParent = this.transform.parent;
 
-        property = this.GetComponent<Parts_Porperty>().rand_Property;
+        if(this.transform.parent.tag != "Inventory")
+        {
+            property = -this.GetComponent<Parts_Porperty>().rand_Property;
+
+        }
+        else
+        {
+            property = this.GetComponent<Parts_Porperty>().rand_Property;
+
+        }
         this.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
         transform.SetParent(onDragParent);

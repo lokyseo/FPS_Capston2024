@@ -24,21 +24,32 @@ public class InhenceManager : MonoBehaviour
 
     void Update()
     {
-        property_Image[0].rectTransform.sizeDelta = new Vector2(Parts_Drag.property * 50, 0);
-        
-        
+        if(Parts_Drag.property > 0)
+        {
+            property_Image[0].transform.localScale = new Vector3(1, 1, 1);
+            property_Image[0].rectTransform.sizeDelta = new Vector2(Parts_Drag.property * 50, 0);
+        }
+        else
+        {
+            property_Image[0].transform.localScale = new Vector3(-1, 1, 1);
+            property_Image[0].rectTransform.sizeDelta = new Vector2(Parts_Drag.property * -50, 0);
 
-        if(isChangedParts )
+        }
+
+
+
+        if (isChangedParts )
         {
             for (int i = 0; i < slot_Image.Length; i++)
             {
+                temp_slider_Value[i] = 0;
+
                 if (slot_Image[i].transform.childCount > 0)
                 {
                     temp_slider_Value[i] += slot_Image[i].GetComponentInChildren<Parts_Porperty>().rand_Property;
                 }
                 else
                 {
-                    temp_slider_Value[i] = 0;
                 }
             }
 

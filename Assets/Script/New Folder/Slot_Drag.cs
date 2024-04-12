@@ -18,6 +18,7 @@ public class Slot_Drag : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
+        if(Parts_Drag.saveGameObject == null) return;
         if (this.tag == "Inventory")
         {
             for(int i = 0; i < this.transform.parent.childCount;)
