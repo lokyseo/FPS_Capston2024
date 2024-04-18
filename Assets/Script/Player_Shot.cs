@@ -27,6 +27,7 @@ public class Player_Shot : MonoBehaviour
     int maxBulletCount;
 
     int weaponType; //권총 : 0, AR : 1, SR : 2
+    bool isZoom;
 
     void Start()
     {
@@ -129,6 +130,7 @@ public class Player_Shot : MonoBehaviour
                 fire_anim.SetTrigger("isGunReload");
 
             }
+            
         }
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ A R @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -217,19 +219,31 @@ public class Player_Shot : MonoBehaviour
 
             }
         }
+
+
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            if(weaponType != 2)
+            if (weaponType != 2)
             {
                 if (zoom_Image.gameObject.activeSelf)
                 {
+                    fire_anim.SetBool("isGunZoom", false);
+
                     zoom_Image.gameObject.SetActive(false);
+
                     this.transform.localPosition += new Vector3(0, 0, -1);
+
+
                 }
                 else
                 {
+                    fire_anim.SetBool("isGunZoom", true);
+
                     zoom_Image.gameObject.SetActive(true);
+
                     this.transform.localPosition += new Vector3(0, 0, 1);
+
+
                 }
             }
             else
@@ -237,18 +251,18 @@ public class Player_Shot : MonoBehaviour
                 if (zoom_x4Image.gameObject.activeSelf)
                 {
                     zoom_x4Image.gameObject.SetActive(false);
+
                     this.transform.localPosition += new Vector3(0, 0, -8);
                 }
                 else
                 {
                     zoom_x4Image.gameObject.SetActive(true);
+
                     this.transform.localPosition += new Vector3(0, 0, 8);
                 }
             }
-            
-        }
 
-        
+        }
 
         //------------------------------------------------------------무기 스왑
         if (Input.GetKeyDown(KeyCode.Alpha1))
