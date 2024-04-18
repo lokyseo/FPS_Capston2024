@@ -3,12 +3,22 @@ guid: 40d4ea9de535f254f9a92fe8c63f4cc4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Main
+    second: {fileID: 2100000, guid: e9d6974788286fd45bb69c127afdaaf1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shield
+    second: {fileID: 2100000, guid: 2a7b841908e0960418d3dbc9420a5078, type: 2}
   materials:
     materialImportMode: 2
     materialName: 2
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0

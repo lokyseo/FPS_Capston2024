@@ -3,12 +3,42 @@ guid: 467b78471aa3d6242b0ef670da503f50
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body
+    second: {fileID: 2100000, guid: f31dd0f751d10e5438ac79b525172cb0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BodyTop
+    second: {fileID: 2100000, guid: 51cb27c211e94c741b47fe7ba0296402, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Clip
+    second: {fileID: 2100000, guid: 1f342f4900ff0714b8a23434a4ba92ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stand
+    second: {fileID: 2100000, guid: 8504f900bc2acb84491555b5fe599bbf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: acc
+    second: {fileID: 2100000, guid: 6d1807efb479e3249b1b8eaafc3bd748, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cylinder
+    second: {fileID: 2100000, guid: b91685e53c71e874a85c11052c710f33, type: 2}
   materials:
     materialImportMode: 2
     materialName: 2
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0

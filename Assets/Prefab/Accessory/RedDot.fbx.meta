@@ -3,12 +3,32 @@ guid: 72b93adcfe3755541a0e9e4e1ddbad62
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cylinder
+    second: {fileID: 2100000, guid: b6644e34992deff47848e499dd533947, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GunBTM
+    second: {fileID: 2100000, guid: f6d97c6c971c6034abdb1c0d9cc0497d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GunTop
+    second: {fileID: 2100000, guid: 4ffba15e6eaa9d047a70892af7c25128, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 3d52eda4e5fdfc9499a4c5d6534d92e3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 1
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
