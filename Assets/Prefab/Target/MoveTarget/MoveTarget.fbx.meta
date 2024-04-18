@@ -3,12 +3,57 @@ guid: b27a65e00b6d68440872cd4b37a2ddc4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Acc
+    second: {fileID: 2100000, guid: 083e93b4b04857d408384ded3a0c0366, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Back
+    second: {fileID: 2100000, guid: a31cb327a65f1a442a9230d5e0cd16ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body
+    second: {fileID: 2100000, guid: f8b5129106721e24b81ae02ed6c86005, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cylinder
+    second: {fileID: 2100000, guid: f12cf51417514a24e8130aa8ef779587, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gun
+    second: {fileID: 2100000, guid: 599c4343ad419e74fa8c164b1bbc4db2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hand
+    second: {fileID: 2100000, guid: 6eccd195e58ed4746ad5ea6d773a94c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Line
+    second: {fileID: 2100000, guid: b5f5dc6e6a34d4644a580e383db13431, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Main
+    second: {fileID: 2100000, guid: d3348bf83eca1764c933d71f59dd9219, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shield
+    second: {fileID: 2100000, guid: 527e20f8eb980024ea9c1a66f48927c8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 2
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
