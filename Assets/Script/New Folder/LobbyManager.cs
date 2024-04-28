@@ -23,7 +23,7 @@ public class LobbyManager : MonoBehaviour
     }
     public void PunchKing()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("PunchKing");
     }
     public void MainGame()
     {

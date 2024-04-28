@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Inhence.unity
     guid: 0822a279248d3004c9c07d4745304240
+  - enabled: 1
+    path: Assets/Scenes/PunchKing.unity
+    guid: 1806540fb2697954faeb8304c2ba7202
   m_configObjects: {}
