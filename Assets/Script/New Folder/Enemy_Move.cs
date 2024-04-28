@@ -8,6 +8,7 @@ public class Enemy_Move : MonoBehaviour
     float moveInterval;
     bool isMoving;
     int randnum;
+    Vector3 dir;
 
     void Start()
     {
@@ -22,7 +23,7 @@ public class Enemy_Move : MonoBehaviour
         {
             isMoving = true;
             randnum = Random.Range(0, movePoints.Length);
-
+            dir = movePoints[randnum].position - this.transform.position;
         }
 
         if (isMoving)
@@ -34,12 +35,14 @@ public class Enemy_Move : MonoBehaviour
 
     void MovingEnemy()
     {
-        this.transform.position = Vector3.MoveTowards(this.transform.position, movePoints[randnum].position, 5.0f * Time.deltaTime);
-        this.transform.LookAt(movePoints[randnum].position);
-        if(Vector3.Distance(this.transform.position, movePoints[randnum].position) < 0.1f)
+        this.transform.position = Vector3.MoveTowards(this.transform.position, movePoints[randnum].position, 7.0f * Time.deltaTime);
+        //this.transform.LookAt(movePoints[randnum].position);
+        this.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 5 * Time.deltaTime);
+
+        if (Vector3.Distance(this.transform.position, movePoints[randnum].position) < 0.1f)
         {
             isMoving = false;
-            moveInterval = 1.5f;
+            moveInterval = 1.2f;
         }
     }
 }

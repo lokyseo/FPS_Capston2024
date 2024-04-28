@@ -16,7 +16,7 @@ public class Hit_Effect : MonoBehaviour
     {
         Color tempColor = hitImage.color;
 
-        tempColor.a *= 0.98f;
+        tempColor.a *= 0.99f;
         hitImage.color = tempColor;
 
     }

@@ -1109,7 +1109,7 @@ GameObject:
   - component: {fileID: 397453466}
   - component: {fileID: 397453465}
   m_Layer: 0
-  m_Name: Player (1)
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1729,7 +1729,7 @@ MonoBehaviour:
   zoom_x4Image: {fileID: 788502328}
   textbulletCount: {fileID: 146433534}
   spawnSphere: {fileID: 0}
-  sphere: {fileID: 3481714383638928134, guid: 75044e9fbcc2d9f40aab3b0093a655c5, type: 3}
+  sphere: {fileID: 8084841851909906425, guid: 1e731ce41423d8b459e71041a2b8d4cf, type: 3}
   anim_Gun: {fileID: 1231758365}
   gunFire: {fileID: 5471831179268997436}
 --- !u!1 &693317302
