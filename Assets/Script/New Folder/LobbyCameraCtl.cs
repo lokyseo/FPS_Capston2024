@@ -13,6 +13,6 @@ public class LobbyCameraCtl : MonoBehaviour
 
     void Update()
     {
-        LobbyCamera.m_XAxis.Value += 0.1f;
+        LobbyCamera.m_XAxis.Value += 0.02f;
     }
 }
