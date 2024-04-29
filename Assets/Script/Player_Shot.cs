@@ -20,6 +20,8 @@ public class Player_Shot : MonoBehaviour
 
     public ParticleSystem gunFire;
     Animator fire_anim;
+    [Header("펀치킹")]
+    public Text textScore;
 
     float gunDelaytime;    
 
