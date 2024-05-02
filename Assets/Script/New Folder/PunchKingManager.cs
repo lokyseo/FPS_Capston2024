@@ -6,18 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class PunchKingManager : MonoBehaviour
 {
-    public Transform[] movePoint;
-    public GameObject enemyObj;
-    Enemy_Move enemy_scr;
+    public Text score_txt;
+    public static float curScore;
 
     void Start()
     {
-        //enemy_scr = enemyObj.GetComponent<Enemy_Move>();
+        curScore = 0;
+        score_txt.text = "점수 : " + curScore.ToString("F0");
     }
 
     void Update()
     {
-        
+        score_txt.text = "점수 : " + curScore.ToString("F0");
+
     }
 
 
