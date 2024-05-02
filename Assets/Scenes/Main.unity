@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3157,11 +3157,13 @@ MonoBehaviour:
   hit_Image: {fileID: 343976253}
   zoom_Image: {fileID: 1515942788}
   zoom_x4Image: {fileID: 788502328}
+  bulletMarks: {fileID: 2527267975247996394, guid: a7762f71bf934f0419ccc56b5723bc26, type: 3}
   textbulletCount: {fileID: 146433534}
   spawnSphere: {fileID: 1015909491}
   sphere: {fileID: 8084841851909906425, guid: 1e731ce41423d8b459e71041a2b8d4cf, type: 3}
   anim_Gun: {fileID: 1231758365}
   gunFire: {fileID: 5471831179268997436}
+  textScore: {fileID: 0}
 --- !u!1001 &638648790
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4239,11 +4241,13 @@ MonoBehaviour:
   hit_Image: {fileID: 343976253}
   zoom_Image: {fileID: 1515942788}
   zoom_x4Image: {fileID: 788502328}
+  bulletMarks: {fileID: 0}
   textbulletCount: {fileID: 146433534}
   spawnSphere: {fileID: 1015909491}
   sphere: {fileID: 3481714383638928134, guid: 75044e9fbcc2d9f40aab3b0093a655c5, type: 3}
   anim_Gun: {fileID: 0}
   gunFire: {fileID: 5471831179268997436}
+  textScore: {fileID: 0}
 --- !u!1 &992338322
 GameObject:
   m_ObjectHideFlags: 0
@@ -5259,6 +5263,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 176745362}
     m_Modifications:
+    - target: {fileID: 325635623047832532, guid: ac006f1c9321c054e96f86dee52dc183, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 772720780299941730, guid: ac006f1c9321c054e96f86dee52dc183, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564087215082283655, guid: ac006f1c9321c054e96f86dee52dc183, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833227807723984002, guid: ac006f1c9321c054e96f86dee52dc183, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732318510229284430, guid: ac006f1c9321c054e96f86dee52dc183, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 8587048437761923911, guid: ac006f1c9321c054e96f86dee52dc183, type: 3}
       propertyPath: m_LocalScale.x
       value: 3
@@ -8927,7 +8951,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 64d3e401df9eb8f45963750723bc8f9c, type: 2}
+  - {fileID: 2100000, guid: 43622e6f03fd76f41b1c4d023f3fefe4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
