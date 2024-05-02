@@ -9,10 +9,11 @@ public class LobbyCameraCtl : MonoBehaviour
     void Start()
     {
         LobbyCamera = GetComponent<CinemachineFreeLook>();
+        LobbyCamera.m_XAxis.Value = 0;
     }
 
     void Update()
     {
-        LobbyCamera.m_XAxis.Value += 0.02f;
+        LobbyCamera.m_XAxis.Value += 0.2f;
     }
 }
