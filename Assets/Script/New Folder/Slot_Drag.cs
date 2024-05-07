@@ -48,10 +48,6 @@ public class Slot_Drag : MonoBehaviour, IDropHandler
                     Parts_Drag.saveGameObject.transform.position = transform.position;
                     InhenceManager.isChangedParts = true;
                 }
-                else
-                {
-
-                }
 
             }
             else
@@ -67,10 +63,7 @@ public class Slot_Drag : MonoBehaviour, IDropHandler
 
                     InhenceManager.isChangedParts = true;
                 }
-                else
-                {
-
-                }
+     
             }
         }
         
