@@ -14,6 +14,6 @@ public class LobbyCameraCtl : MonoBehaviour
 
     void Update()
     {
-        LobbyCamera.m_XAxis.Value += 0.2f;
+        LobbyCamera.m_XAxis.Value += 18f*Time.deltaTime;
     }
 }
