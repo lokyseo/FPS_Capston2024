@@ -11,7 +11,7 @@ public class Player_Shot : MonoBehaviour
     public Image hit_Image;
     public Image zoom_Image;
     public Image zoom_x4Image;
-    public GameObject bulletMarks;
+    public GameObject bulletMarks;//탄흔
     public Text textbulletCount;
 
     [Header("게임 오브젝트")]
@@ -20,6 +20,8 @@ public class Player_Shot : MonoBehaviour
     public GameObject anim_Gun;
 
     public ParticleSystem gunFire;
+    public ParticleSystem arFire;
+    public ParticleSystem srFire;
     Animator fire_anim;
     [Header("펀치킹")]
     public Text textScore;
@@ -49,7 +51,8 @@ public class Player_Shot : MonoBehaviour
 
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 권 총 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockIdle")) 
+        if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockIdle")||
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockZoom")) 
         {
             gunDelaytime -= Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.Mouse0) && curBulletCount > 0)
@@ -113,11 +116,14 @@ public class Player_Shot : MonoBehaviour
                         hit_Image.color = new Color(1, 1, 1, 1);
                         PunchKingManager.curScore += 10;
                     }
-
-                    if (hitData.transform.tag == "Head")
+                    else if (hitData.transform.tag == "Head")
                     {
                         hit_Image.color = new Color(1, 0, 0, 1);
                         PunchKingManager.curScore += 20;
+                    }
+                    else if(hitData.transform.GetComponent<Collider>() != null)
+                    {
+                        Instantiate(bulletMarks, hitData.point, Quaternion.FromToRotation(Vector3.forward, hitData.normal));
                     }
 
                     if (hitData.transform.name.Contains("Sphere"))
@@ -126,10 +132,10 @@ public class Player_Shot : MonoBehaviour
                         spawnSphere.GetComponent<Spawn_Sphere>().count_Score++;
                     }
 
-                    if(hitData.transform.GetComponent<Collider>() != null)
-                    {
-                        Instantiate(bulletMarks, hitData.point, Quaternion.FromToRotation(Vector3.forward, hitData.normal));
-                    }
+                    //if(hitData.transform.GetComponent<Collider>() != null)
+                    //{
+                    //    Instantiate(bulletMarks, hitData.point, Quaternion.FromToRotation(Vector3.forward, hitData.normal));
+                    //}
 
                 }
             }
@@ -144,14 +150,15 @@ public class Player_Shot : MonoBehaviour
         }
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ A R @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdle"))
+        if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdle")||
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleZoom"))
         {
             if (Input.GetKey(KeyCode.Mouse0) && curBulletCount > 0)
             {
                 curBulletCount--;
                 textbulletCount.text = curBulletCount + " / " + maxBulletCount;
                 fire_anim.SetTrigger("isArShot");
-                gunFire.Play();
+                arFire.Play();
 
                 Ray ray = new Ray(transform.position, transform.forward);
                 RaycastHit hitData;
@@ -206,13 +213,16 @@ public class Player_Shot : MonoBehaviour
                     if (hitData.transform.tag == "Target")
                     {
                         hit_Image.color = new Color(1, 1, 1, 1);
-                        PunchKingManager.curScore += 2.5f;
+                        PunchKingManager.curScore += 3;
                     }
-
-                    if (hitData.transform.tag == "Head")
+                    else if (hitData.transform.tag == "Head")
                     {
                         hit_Image.color = new Color(1, 0, 0, 1);
-                        PunchKingManager.curScore += 5;
+                        PunchKingManager.curScore += 6;
+                    }
+                    else if (hitData.transform.GetComponent<Collider>() != null)
+                    {
+                        Instantiate(bulletMarks, hitData.point, Quaternion.FromToRotation(Vector3.forward, hitData.normal));
                     }
 
                     if (hitData.transform.name.Contains("Sphere"))
@@ -221,10 +231,7 @@ public class Player_Shot : MonoBehaviour
                         spawnSphere.GetComponent<Spawn_Sphere>().count_Score++;
                     }
 
-                    if (hitData.transform.GetComponent<Collider>() != null)
-                    {
-                        Instantiate(bulletMarks, hitData.point, Quaternion.FromToRotation(Vector3.forward, hitData.normal));
-                    }
+                   
                 }
             }
             if (Input.GetKeyDown(KeyCode.R))
@@ -237,14 +244,15 @@ public class Player_Shot : MonoBehaviour
         }
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ S  R  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("SniperRifleIdle"))
+        if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("SniperRifleIdle")||
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("SniperRifleZoom"))
         {
             if (Input.GetKeyDown(KeyCode.Mouse0) && curBulletCount > 0)
             {
                 curBulletCount--;
                 textbulletCount.text = curBulletCount + " / " + maxBulletCount;
                 fire_anim.SetTrigger("isSrShot");
-                gunFire.Play();
+                srFire.Play();
 
                 Ray ray = new Ray(transform.position, transform.forward);
                 RaycastHit hitData;
@@ -299,13 +307,16 @@ public class Player_Shot : MonoBehaviour
                     if (hitData.transform.tag == "Target")
                     {
                         hit_Image.color = new Color(1, 1, 1, 1);
-                        PunchKingManager.curScore += 30f;
+                        PunchKingManager.curScore += 30;
                     }
-
-                    if (hitData.transform.tag == "Head")
+                    else if (hitData.transform.tag == "Head")
                     {
                         hit_Image.color = new Color(1, 0, 0, 1);
-                        PunchKingManager.curScore += 100;
+                        PunchKingManager.curScore += 60;
+                    }
+                    else if (hitData.transform.GetComponent<Collider>() != null)
+                    {
+                        Instantiate(bulletMarks, hitData.point, Quaternion.FromToRotation(Vector3.forward, hitData.normal));
                     }
 
                     if (hitData.transform.name.Contains("Sphere"))
@@ -314,10 +325,7 @@ public class Player_Shot : MonoBehaviour
                         spawnSphere.GetComponent<Spawn_Sphere>().count_Score++;
                     }
 
-                    if (hitData.transform.GetComponent<Collider>() != null)
-                    {
-                        Instantiate(bulletMarks, hitData.point, Quaternion.FromToRotation(Vector3.forward, hitData.normal));
-                    }
+                    
                 }
             }
             if (Input.GetKeyDown(KeyCode.R))

@@ -13,7 +13,7 @@ public class InhenceManager : MonoBehaviour
 
     public Image[] slot_Image;
 
-    public static float basic_slider_Value;
+    public float basic_slider_Value;
     float[] temp_slider_Value = new float[4];
 
     void Start()
@@ -26,8 +26,25 @@ public class InhenceManager : MonoBehaviour
     {
         if(Parts_Drag.property > 0)
         {
-            property_Image[0].transform.localScale = new Vector3(1, 1, 1);
-            property_Image[0].rectTransform.sizeDelta = new Vector2(Parts_Drag.property * 50, 0);
+            float test = (basic_slider_Value + Parts_Drag.property) - property_Slider.value;
+
+            if (property_Slider.value < (basic_slider_Value + Parts_Drag.property))
+            {
+                //Debug.Log(test);
+
+                property_Image[0].transform.localScale = new Vector3(1, 1, 1);
+
+                property_Image[0].rectTransform.sizeDelta =
+                    new Vector2(test * 50, 0); 
+            }
+            else
+            {
+                property_Image[0].transform.localScale = new Vector3(-1, 1, 1);
+
+                property_Image[0].rectTransform.sizeDelta =
+                    new Vector2(test * -50, 0); 
+            
+            }
         }
         else
         {
@@ -48,9 +65,7 @@ public class InhenceManager : MonoBehaviour
                 {
                     temp_slider_Value[i] += slot_Image[i].GetComponentInChildren<Parts_Porperty>().rand_Property;
                 }
-                else
-                {
-                }
+               
             }
 
             property_Slider.value = basic_slider_Value + temp_slider_Value[0];//test
