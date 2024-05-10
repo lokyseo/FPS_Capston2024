@@ -8,49 +8,75 @@ public class InhenceManager : MonoBehaviour
 {
     public static bool isChangedParts;
 
-    public Slider property_Slider;
+    public Slider[] property_Slider;
     public Image[] property_Image;
 
     public Image[] slot_Image;
 
-    public float basic_slider_Value;
+    public float[] basic_slider_Value = new float[4];
     float[] temp_slider_Value = new float[4];
 
     void Start()
     {
         isChangedParts = false;
-        basic_slider_Value = property_Slider.value;
+        for(int i = 0; i< property_Slider.Length; i++)
+        {
+            basic_slider_Value[i] = property_Slider[i].value;
+
+        }
     }
 
     void Update()
     {
-        if(Parts_Drag.property > 0)
+
+        if(Parts_Drag.property > 0) //인벤토리에서 드래그 됬을 때
         {
-            float test = (basic_slider_Value + Parts_Drag.property) - property_Slider.value;
-
-            if (property_Slider.value < (basic_slider_Value + Parts_Drag.property))
+            for (int i = 0; i < 4; i++)
             {
-                //Debug.Log(test);
+                float test = (basic_slider_Value[i] + Parts_Drag.property) - property_Slider[i].value;
+                if(Parts_Drag.saveGameObject.tag == property_Slider[i].tag)
+                {
+                    if (property_Slider[i].value < (basic_slider_Value[i] + Parts_Drag.property))
+                    {
+                        //Debug.Log(test);
 
-                property_Image[0].transform.localScale = new Vector3(1, 1, 1);
+                        property_Image[i].transform.localScale = new Vector3(1, 1, 1);
 
-                property_Image[0].rectTransform.sizeDelta =
-                    new Vector2(test * 50, 0); 
+                        property_Image[i].rectTransform.sizeDelta = new Vector2(test * 50, 0);
+                    }
+                    else
+                    {
+                        property_Image[i].transform.localScale = new Vector3(-1, 1, 1);
+
+                        property_Image[i].rectTransform.sizeDelta =
+                            new Vector2(test * -50, 0);
+
+                    }
+                }
+                
             }
-            else
-            {
-                property_Image[0].transform.localScale = new Vector3(-1, 1, 1);
-
-                property_Image[0].rectTransform.sizeDelta =
-                    new Vector2(test * -50, 0); 
             
+        }
+        else if (Parts_Drag.property < 0)//슬롯에서 드래그 됬을 때
+        {
+           // if (Parts_Drag.saveGameObject == null) return;
+            for (int i = 0; i < 4; i++)
+            {
+                if (Parts_Drag.saveGameObject.tag == property_Slider[i].tag)
+                {
+                  property_Image[i].transform.localScale = new Vector3(-1, 1, 1);
+                  property_Image[i].rectTransform.sizeDelta = new Vector2(Parts_Drag.property * -50, 0);
+                }
             }
+
         }
         else
         {
-            property_Image[0].transform.localScale = new Vector3(-1, 1, 1);
-            property_Image[0].rectTransform.sizeDelta = new Vector2(Parts_Drag.property * -50, 0);
-
+            for (int i = 0; i < 4; i++)
+            {
+                property_Image[i].transform.localScale = new Vector3(0, 1, 1);
+                property_Image[i].rectTransform.sizeDelta = new Vector2(Parts_Drag.property * -50, 0);
+            }
         }
 
 
@@ -65,10 +91,11 @@ public class InhenceManager : MonoBehaviour
                 {
                     temp_slider_Value[i] += slot_Image[i].GetComponentInChildren<Parts_Porperty>().rand_Property;
                 }
-               
+
+                property_Slider[i].value = basic_slider_Value[i] + temp_slider_Value[i];//test
+
             }
 
-            property_Slider.value = basic_slider_Value + temp_slider_Value[0];//test
             isChangedParts = false;
         }
     }
