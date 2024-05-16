@@ -151,7 +151,7 @@ public class Player_Shot : MonoBehaviour
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ A R @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdle")||
-            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleZoomInOut"))
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleZoom"))
         {
             if (Input.GetKey(KeyCode.Mouse0) && curBulletCount > 0)
             {
