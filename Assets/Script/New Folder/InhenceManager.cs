@@ -42,14 +42,14 @@ public class InhenceManager : MonoBehaviour
 
                         property_Image[i].transform.localScale = new Vector3(1, 1, 1);
 
-                        property_Image[i].rectTransform.sizeDelta = new Vector2(test * 50, 0);
+                        property_Image[i].rectTransform.sizeDelta = new Vector2(test * (500 / property_Slider[i].maxValue), 0);
                     }
                     else
                     {
                         property_Image[i].transform.localScale = new Vector3(-1, 1, 1);
 
                         property_Image[i].rectTransform.sizeDelta =
-                            new Vector2(test * -50, 0);
+                            new Vector2(test * -(500 / property_Slider[i].maxValue), 0);
 
                     }
                 }
@@ -65,7 +65,7 @@ public class InhenceManager : MonoBehaviour
                 if (Parts_Drag.saveGameObject.tag == property_Slider[i].tag)
                 {
                   property_Image[i].transform.localScale = new Vector3(-1, 1, 1);
-                  property_Image[i].rectTransform.sizeDelta = new Vector2(Parts_Drag.property * -50, 0);
+                  property_Image[i].rectTransform.sizeDelta = new Vector2(Parts_Drag.property * -(500 / property_Slider[i].maxValue), 0);
                 }
             }
 
@@ -75,7 +75,7 @@ public class InhenceManager : MonoBehaviour
             for (int i = 0; i < 4; i++)
             {
                 property_Image[i].transform.localScale = new Vector3(0, 1, 1);
-                property_Image[i].rectTransform.sizeDelta = new Vector2(Parts_Drag.property * -50, 0);
+                property_Image[i].rectTransform.sizeDelta = new Vector2(Parts_Drag.property * -(500 / property_Slider[i].maxValue), 0);
             }
         }
 
