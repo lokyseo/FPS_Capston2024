@@ -52,7 +52,7 @@ public class Player_Shot : MonoBehaviour
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 권 총 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockIdle")||
-            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockZoom")) 
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockZoomInOut")) 
         {
             gunDelaytime -= Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.Mouse0) && curBulletCount > 0)
@@ -151,13 +151,22 @@ public class Player_Shot : MonoBehaviour
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ A R @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdle")||
-            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleZoom"))
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleZoomInOut"))
         {
             if (Input.GetKey(KeyCode.Mouse0) && curBulletCount > 0)
             {
                 curBulletCount--;
                 textbulletCount.text = curBulletCount + " / " + maxBulletCount;
-                fire_anim.SetTrigger("isArShot");
+                if(fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdle"))
+                {
+                    fire_anim.SetTrigger("isArShot");
+
+                }
+                else if(fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleZoom"))
+                {
+                    fire_anim.SetTrigger("isArZoomShot");
+
+                }
                 arFire.Play();
 
                 Ray ray = new Ray(transform.position, transform.forward);
@@ -245,7 +254,7 @@ public class Player_Shot : MonoBehaviour
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ S  R  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("SniperRifleIdle")||
-            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("SniperRifleZoom"))
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("SniperRifleZoomInOut"))
         {
             if (Input.GetKeyDown(KeyCode.Mouse0) && curBulletCount > 0)
             {
@@ -339,52 +348,84 @@ public class Player_Shot : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            if (weaponType != 2)
+            switch (weaponType)
             {
-                if (zoom_Image.gameObject.activeSelf)
-                {
-                    fire_anim.SetBool("isGunZoom", false);
+                case 1 :
 
-                    zoom_Image.gameObject.SetActive(false);
+                    if (zoom_Image.gameObject.activeSelf)
+                    {
+                        fire_anim.SetBool("isGunZoom", false);
 
-                    this.transform.localPosition += new Vector3(0, 0, -1);
+                        zoom_Image.gameObject.SetActive(false);
 
-
-                }
-                else
-                {
-                    fire_anim.SetBool("isGunZoom", true);
-
-                    zoom_Image.gameObject.SetActive(true);
-
-                    this.transform.localPosition += new Vector3(0, 0, 1);
+                        this.transform.localPosition += new Vector3(0, 0, -1);
 
 
-                }
+                    }
+                    else
+                    {
+                        fire_anim.SetBool("isGunZoom", true);
+
+                        zoom_Image.gameObject.SetActive(true);
+
+                        this.transform.localPosition += new Vector3(0, 0, 1);
+
+
+                    }
+
+                    break;
+                case 2:
+                    if (zoom_x4Image.gameObject.activeSelf)
+                    {
+                        fire_anim.SetBool("isSrZoom", false);
+
+
+                        zoom_x4Image.gameObject.SetActive(false);
+
+                        this.transform.localPosition += new Vector3(0, 0, -8);
+                    }
+                    else
+                    {
+                        fire_anim.SetBool("isSrZoom", true);
+                        zoom_x4Image.gameObject.SetActive(true);
+
+                        this.transform.localPosition += new Vector3(0, 0, 8);
+                    }
+
+                    break;
+                case 0:
+                    if (zoom_Image.gameObject.activeSelf)
+                    {
+                        fire_anim.SetBool("isGunZoom", false);
+
+                        zoom_Image.gameObject.SetActive(false);
+
+                        this.transform.localPosition += new Vector3(0, 0, -1);
+
+
+                    }
+                    else
+                    {
+                        fire_anim.SetBool("isGunZoom", true);
+
+                        zoom_Image.gameObject.SetActive(true);
+
+                        this.transform.localPosition += new Vector3(0, 0, 1);
+
+
+                    }
+                    break;
             }
-            else
-            {
-                if (zoom_x4Image.gameObject.activeSelf)
-                {
-                    fire_anim.SetBool("isSrZoom", false);
-
-
-                    zoom_x4Image.gameObject.SetActive(false);
-
-                    this.transform.localPosition += new Vector3(0, 0, -8);
-                }
-                else
-                {
-                    fire_anim.SetBool("isSrZoom", true);
-                    zoom_x4Image.gameObject.SetActive(true);
-
-                    this.transform.localPosition += new Vector3(0, 0, 8);
-                }
-            }
-
         }
 
+
         //------------------------------------------------------------무기 스왑
+        SwapWeapon();
+    }
+
+
+    void SwapWeapon()
+    {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             fire_anim.SetTrigger("isArSet");
@@ -414,5 +455,4 @@ public class Player_Shot : MonoBehaviour
 
         }
     }
-
 }
