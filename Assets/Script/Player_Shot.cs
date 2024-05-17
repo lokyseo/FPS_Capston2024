@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+//using UnityEngine.UIElements;
 
 
 public class Player_Shot : MonoBehaviour
@@ -26,17 +27,26 @@ public class Player_Shot : MonoBehaviour
     [Header("펀치킹")]
     public Text textScore;
 
-    float gunDelaytime;    
-
     int curBulletCount;
     int maxBulletCount;
 
     int weaponType; //권총 : 0, AR : 1, SR : 2
-    bool isZoom;
+
+
+    [SerializeField]
+    public float lookSensitivity_V;
+
+    private float cameraRotationLimit;
+    private float currentCameraRotationX;
+    public float adsadasd;
+    public float adsadasd2;
+
 
     void Start()
     {
-
+        adsadasd = 0;
+        lookSensitivity_V = 2;
+        cameraRotationLimit = 50;
         weaponType = 0;
         maxBulletCount = 6;
         curBulletCount = maxBulletCount;
@@ -48,13 +58,13 @@ public class Player_Shot : MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward * 100, Color.red);
         //if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockSet") &&
         //   fire_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.95f)
+        CameraRotation();
 
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 권 총 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockIdle")||
             fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockZoomInOut")) 
         {
-            gunDelaytime -= Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.Mouse0) && curBulletCount > 0)
             {
                 curBulletCount--;
@@ -167,6 +177,8 @@ public class Player_Shot : MonoBehaviour
                     fire_anim.SetTrigger("isArZoomShot");
 
                 }
+                adsadasd += 0.9f;
+                adsadasd2 = Random.Range(-0.2f, 0.21f);
                 arFire.Play();
 
                 Ray ray = new Ray(transform.position, transform.forward);
@@ -420,10 +432,29 @@ public class Player_Shot : MonoBehaviour
 
 
         //------------------------------------------------------------무기 스왑
+
         SwapWeapon();
     }
 
 
+
+    private void CameraRotation()
+    {
+        float _xRotation = Input.GetAxisRaw("Mouse Y");
+        float _cameraRotationX = _xRotation * lookSensitivity_V;
+        currentCameraRotationX -= _cameraRotationX;
+        currentCameraRotationX = Mathf.Clamp(currentCameraRotationX, -cameraRotationLimit, cameraRotationLimit);
+
+        //if(adsadasd != 0)
+        //{
+        //    adsadasd -= 0.5f *Time.deltaTime
+        //}
+        adsadasd = Mathf.Lerp(adsadasd, 0, Time.deltaTime * 3);
+
+
+        this.transform.localEulerAngles = new Vector3(currentCameraRotationX - adsadasd, adsadasd2, 0f);
+
+    }
     void SwapWeapon()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))

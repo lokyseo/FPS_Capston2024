@@ -18,10 +18,9 @@ public class Player_Move : MonoBehaviour
     private float currentCameraRotationX;
 
     [SerializeField]
-    private Camera theCamera;
+    //private Camera theCamera;
     private Rigidbody myRigid;
     public Vector3 _velocity;
-
 
     void Start()
     {
@@ -33,12 +32,12 @@ public class Player_Move : MonoBehaviour
     void Update()  
     {
         Move();                 // 1️ 키보드 입력에 따라 이동
-        CameraRotation();       // 2️ 마우스를 위아래(Y) 움직임에 따라 카메라 X 축 회전 
         CharacterRotation();    // 3️ 마우스 좌우(X) 움직임에 따라 캐릭터 Y 축 회전 
+
 
     }
 
-
+   
     private void Move()
     {
        float _moveDirX = Input.GetAxisRaw("Horizontal");
@@ -54,16 +53,7 @@ public class Player_Move : MonoBehaviour
         //myRigid.velocity = _velocity;
     }
 
-    private void CameraRotation()
-    {
-        float _xRotation = Input.GetAxisRaw("Mouse Y");
-        float _cameraRotationX = _xRotation * lookSensitivity_V;
-
-        currentCameraRotationX -= _cameraRotationX;
-        currentCameraRotationX = Mathf.Clamp(currentCameraRotationX, -cameraRotationLimit, cameraRotationLimit);
-
-        theCamera.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f);
-    }
+    
 
     private void CharacterRotation()  // 좌우 캐릭터 회전
     {
