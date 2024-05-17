@@ -177,7 +177,7 @@ public class Player_Shot : MonoBehaviour
                     fire_anim.SetTrigger("isArZoomShot");
 
                 }
-                adsadasd += 0.9f;
+                adsadasd += 2.0f;
                 adsadasd2 = Random.Range(-0.2f, 0.21f);
                 arFire.Play();
 
@@ -449,7 +449,7 @@ public class Player_Shot : MonoBehaviour
         //{
         //    adsadasd -= 0.5f *Time.deltaTime
         //}
-        adsadasd = Mathf.Lerp(adsadasd, 0, Time.deltaTime * 3);
+        adsadasd = Mathf.Lerp(adsadasd, 0, Time.deltaTime/adsadasd * 10);
 
 
         this.transform.localEulerAngles = new Vector3(currentCameraRotationX - adsadasd, adsadasd2, 0f);
