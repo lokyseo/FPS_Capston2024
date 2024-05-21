@@ -160,8 +160,8 @@ public class Player_Shot : MonoBehaviour
         }
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ A R @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdle")||
-            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleZoom"))
+        if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdle") && fire_anim.GetBool("isGunZoom") == false ||
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleZoom") && fire_anim.GetBool("isGunZoom") == true)
         {
             if (Input.GetKey(KeyCode.Mouse0) && curBulletCount > 0)
             {

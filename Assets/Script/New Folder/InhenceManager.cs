@@ -16,6 +16,8 @@ public class InhenceManager : MonoBehaviour
     public float[] basic_slider_Value = new float[4];
     float[] temp_slider_Value = new float[4];
 
+    public GameObject[] weapon_array;
+    int weaponType; //0 : AR, 1 : SR, 2 : Gun
     void Start()
     {
         isChangedParts = false;
@@ -100,6 +102,38 @@ public class InhenceManager : MonoBehaviour
         }
     }
 
+    public void LeftButton()
+    {
+        for(int i =0; i <weapon_array.Length; i++)
+        {
+            if(i == weaponType)
+            {
+                if (weaponType > 0)
+                {
+                    weaponType--;
+                    weapon_array[weaponType].SetActive(true);
+
+                }
+                else
+                {
+                    weaponType = 2;
+                    weapon_array[weaponType].SetActive(true);
+
+                }
+            }
+            else
+            {
+                weapon_array[weaponType].SetActive(false);
+            }
+        }
+       
+
+    }
+
+    public void RightButtton()
+    {
+
+    }
 
     public void OnClickBackToLobby()
     {
