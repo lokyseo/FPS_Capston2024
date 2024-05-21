@@ -8,18 +8,24 @@ public class InhenceManager : MonoBehaviour
 {
     public static bool isChangedParts;
 
-    public Slider[] property_Slider;
-    public Image[] property_Image;
+    public Slider[] property_Slider; // 슬라이더
+    public Image[] property_Image; // 슬라이더 변동 이미지
 
-    public Image[] slot_Image;
+    public GameObject[] slot_Type;
+    Image[] slot_Image = new Image[4]; // 슬롯 이미지
 
-    public float[] basic_slider_Value = new float[4];
-    float[] temp_slider_Value = new float[4];
+    public float[] basic_slider_Value = new float[4]; // 슬라이더 초기값
+    float[] temp_slider_Value = new float[4]; // 임시 데이터값
 
     public GameObject[] weapon_array;
-    int weaponType; //0 : AR, 1 : SR, 2 : Gun
+    public int weaponType; 
+    
+    //0 : AR, 1 : SR, 2 : Gun
+
+
     void Start()
     {
+        weaponType = 0;
         isChangedParts = false;
         for(int i = 0; i< property_Slider.Length; i++)
         {
@@ -30,8 +36,7 @@ public class InhenceManager : MonoBehaviour
 
     void Update()
     {
-
-        if(Parts_Drag.property > 0) //인벤토리에서 드래그 됬을 때
+        if (Parts_Drag.property > 0) //인벤토리에서 드래그 됬을 때
         {
             for (int i = 0; i < 4; i++)
             {
@@ -40,7 +45,6 @@ public class InhenceManager : MonoBehaviour
                 {
                     if (property_Slider[i].value < (basic_slider_Value[i] + Parts_Drag.property))
                     {
-                        //Debug.Log(test);
 
                         property_Image[i].transform.localScale = new Vector3(1, 1, 1);
 
@@ -92,6 +96,7 @@ public class InhenceManager : MonoBehaviour
                 if (slot_Image[i].transform.childCount > 0)
                 {
                     temp_slider_Value[i] += slot_Image[i].GetComponentInChildren<Parts_Porperty>().rand_Property;
+                    PlayerPrefs.SetFloat("Slot" + i, slot_Image[i].GetComponentInChildren<Parts_Porperty>().rand_Property);
                 }
 
                 property_Slider[i].value = basic_slider_Value[i] + temp_slider_Value[i];//test
@@ -104,26 +109,31 @@ public class InhenceManager : MonoBehaviour
 
     public void LeftButton()
     {
-        for(int i =0; i <weapon_array.Length; i++)
+        if (weaponType > 0)
+        {
+            weaponType--;
+        }
+        else
+        {
+            weaponType = 2;
+        }
+
+        for (int i =0; i <weapon_array.Length; i++)
         {
             if(i == weaponType)
             {
-                if (weaponType > 0)
+                weapon_array[i].SetActive(true);
+                slot_Type[i].SetActive(true);
+                for(int j = 0; j < slot_Type[i].transform.childCount; j++)
                 {
-                    weaponType--;
-                    weapon_array[weaponType].SetActive(true);
-
-                }
-                else
-                {
-                    weaponType = 2;
-                    weapon_array[weaponType].SetActive(true);
-
+                    slot_Image[j] = slot_Type[i].transform.GetChild(j).GetComponent<Image>();
                 }
             }
             else
             {
-                weapon_array[weaponType].SetActive(false);
+                weapon_array[i].SetActive(false);
+                slot_Type[i].SetActive(false);
+
             }
         }
        
@@ -132,7 +142,32 @@ public class InhenceManager : MonoBehaviour
 
     public void RightButtton()
     {
+        if (weaponType < 2)
+        {
+            weaponType++;
+        }
+        else
+        {
+            weaponType = 0;
+        }
 
+        for (int i = 0; i < weapon_array.Length; i++)
+        {
+            if (i == weaponType)
+            {
+                weapon_array[i].SetActive(true);
+                slot_Type[i].SetActive(true);
+                for (int j = 0; j < slot_Type[i].transform.childCount; j++)
+                {
+                    slot_Image[j] = slot_Type[i].transform.GetChild(j).GetComponent<Image>();
+                }
+            }
+            else
+            {
+                weapon_array[i].SetActive(false);
+                slot_Type[i].SetActive(false);
+            }
+        }
     }
 
     public void OnClickBackToLobby()
