@@ -4567,7 +4567,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Middle/Bone.001_R.017
+    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Middle
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4579,7 +4579,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Middle/Bone.001_R.017
+    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Middle
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4591,7 +4591,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Middle/Bone.001_R.017
+    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Middle
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4603,7 +4603,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: GunHand
+    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Thumb/R_Hand_Thumb.001
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4615,7 +4615,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: GunHand
+    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Thumb/R_Hand_Thumb.001
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4627,7 +4627,43 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: GunHand
+    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Thumb/R_Hand_Thumb.001
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Ring/Bone.001_L.012
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Ring/Bone.001_L.012
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Ring/Bone.001_L.012
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4711,7 +4747,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm
+    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Ring/Bone.001_R.012
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4723,7 +4759,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm
+    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Ring/Bone.001_R.012
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4735,7 +4771,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm
+    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Ring/Bone.001_R.012
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4819,7 +4855,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Thumb/R_Hand_Thumb.001
+    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Index/Bone.001_R.014
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4831,7 +4867,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Thumb/R_Hand_Thumb.001
+    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Index/Bone.001_R.014
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4843,7 +4879,79 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Thumb/R_Hand_Thumb.001
+    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Index/Bone.001_R.014
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Middle/Bone.001_R.017
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Middle/Bone.001_R.017
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Middle/Bone.001_R.017
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Pinky/Bone.001_R.009
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Pinky/Bone.001_R.009
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Pinky/Bone.001_R.009
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4963,42 +5071,6 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Middle
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Middle
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Middle
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
     path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Pinky
     classID: 4
     script: {fileID: 0}
@@ -5071,7 +5143,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Pinky/Bone.001_R.009
+    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Pinky
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -5083,7 +5155,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Pinky/Bone.001_R.009
+    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Pinky
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -5095,7 +5167,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Pinky/Bone.001_R.009
+    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Pinky
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -5107,7 +5179,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Ring/Bone.001_R.012
+    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -5119,7 +5191,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Ring/Bone.001_R.012
+    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -5131,43 +5203,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Ring/Bone.001_R.012
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Pinky/Bone.001_L.009
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Pinky/Bone.001_L.009
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Pinky/Bone.001_L.009
+    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -5251,78 +5287,6 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Index/Bone.001_R.014
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Index/Bone.001_R.014
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: PlayerArm/Body.001/Spine/R_Shoulder/R_Arm/R_Forearm/R_Hand/R_Hand_Index/Bone.001_R.014
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: PlayerArm/Body.001/Spine/L_Shoulder
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: PlayerArm/Body.001/Spine/L_Shoulder
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: PlayerArm/Body.001/Spine/L_Shoulder
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
     path: PlayerArm/Body.001
     classID: 4
     script: {fileID: 0}
@@ -5359,7 +5323,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm
+    path: GunHand
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -5371,7 +5335,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm
+    path: GunHand
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -5383,7 +5347,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm
+    path: GunHand
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -5431,7 +5395,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Ring/Bone.001_L.012
+    path: PlayerArm/Body.001/Spine/L_Shoulder
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -5443,7 +5407,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Ring/Bone.001_L.012
+    path: PlayerArm/Body.001/Spine/L_Shoulder
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -5455,7 +5419,151 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Ring/Bone.001_L.012
+    path: PlayerArm/Body.001/Spine/L_Shoulder
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Ring
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Ring
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Ring
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Index
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Index
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Index
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Middle
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Middle
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Middle
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -5492,6 +5600,42 @@ AnimationClip:
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
     path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Pinky/Bone.001_L.009
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Pinky/Bone.001_L.009
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Pinky/Bone.001_L.009
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -5564,150 +5708,6 @@ AnimationClip:
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
     path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Middle/Bone.001_L.017
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Index
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Index
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Index
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Ring
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Ring
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Ring
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Middle
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Middle
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Middle
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Pinky
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Pinky
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: PlayerArm/Body.001/Spine/L_Shoulder/L_Arm/L_Forearm/L_Hand/L_Hand_Pinky
     classID: 4
     script: {fileID: 0}
     flags: 0
