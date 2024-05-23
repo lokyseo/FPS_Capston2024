@@ -14,7 +14,6 @@ public class Inhence_WeaponRotate : MonoBehaviour
     {
 
         firstAngles = weapon.transform.rotation;
-        Debug.Log(weapon.transform.rotation);
     }
 
     void Update()

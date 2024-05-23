@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class InhenceManager : MonoBehaviour
 {
+    public GameObject canvas_slot;
+
     public static bool isChangedParts;
 
     public Slider[] property_Slider; // 슬라이더
@@ -18,20 +20,53 @@ public class InhenceManager : MonoBehaviour
     float[] temp_slider_Value = new float[4]; // 임시 데이터값
 
     public GameObject[] weapon_array;
-    public int weaponType; 
-    
-    //0 : AR, 1 : SR, 2 : Gun
+    public int weaponType;
 
+    //0 : AR, 1 : SR, 2 : Gun     총알 탄창 조준경 손잡이
+    /* AR
+     * 조준경 0, 데미지 : 5, 장전속도 : 1.0, 탄창 : 25
+     * SR
+     * 조준경 0, 데미지 : 30, 장전속도 : 1.0, 탄창 : 5
+     * Gun
+     * 조존경 0, 데미지 : 8. 장전속도 : 1.0, 탄창 : 8
+     */
 
     void Start()
     {
         weaponType = 0;
         isChangedParts = false;
-        for(int i = 0; i< property_Slider.Length; i++)
-        {
-            basic_slider_Value[i] = property_Slider[i].value;
+        //초기화
 
+        if (weaponType == 0)
+        { 
+            basic_slider_Value[0] = 5;
+            basic_slider_Value[2] = 0;
+            basic_slider_Value[3] = 1.0f;
+            basic_slider_Value[1] = 25;
+        }                            
+        else if (weaponType == 1)    
+        {                            
+            basic_slider_Value[0] = 30;
+            basic_slider_Value[2] = 0;
+            basic_slider_Value[3] = 1.0f;
+            basic_slider_Value[1] = 5;
+        }                            
+        else                         
+        {                            
+            basic_slider_Value[0] = 8;
+            basic_slider_Value[2] = 0;
+            basic_slider_Value[3] = 1.0f;
+            basic_slider_Value[1] = 8;
         }
+        for(int i = 0; i < basic_slider_Value.Length; i++)
+        {
+            property_Slider[i].value = basic_slider_Value[i];
+        }
+        for (int i = 0; i < slot_Type[0].transform.childCount; i++)
+        {
+            slot_Image[i] = slot_Type[0].transform.GetChild(i).GetComponent<Image>();
+        }
+
     }
 
     void Update()
@@ -96,7 +131,23 @@ public class InhenceManager : MonoBehaviour
                 if (slot_Image[i].transform.childCount > 0)
                 {
                     temp_slider_Value[i] += slot_Image[i].GetComponentInChildren<Parts_Porperty>().rand_Property;
-                    PlayerPrefs.SetFloat("Slot" + i, slot_Image[i].GetComponentInChildren<Parts_Porperty>().rand_Property);
+                    switch (weaponType)
+                    {
+                        case 0:
+                            PlayerPrefs.SetFloat("ARSlot" + i, slot_Image[i].GetComponentInChildren<Parts_Porperty>().rand_Property);
+
+                            break;
+                        case 1:
+                            PlayerPrefs.SetFloat("SRSlot" + i, slot_Image[i].GetComponentInChildren<Parts_Porperty>().rand_Property);
+
+                            break;
+                        case 2:
+                            PlayerPrefs.SetFloat("GunSlot" + i, slot_Image[i].GetComponentInChildren<Parts_Porperty>().rand_Property);
+
+                            break;
+
+                    }
+
                 }
 
                 property_Slider[i].value = basic_slider_Value[i] + temp_slider_Value[i];//test
@@ -117,6 +168,25 @@ public class InhenceManager : MonoBehaviour
         {
             weaponType = 2;
         }
+        if (weaponType == 0)
+        {
+            basic_slider_Value[0] = 5;
+            basic_slider_Value[1] = 25;
+
+        }
+        else if (weaponType == 1)
+        {
+            basic_slider_Value[0] = 30;
+            basic_slider_Value[1] = 5;
+        }
+        else
+        {
+            basic_slider_Value[0] = 8;
+            basic_slider_Value[1] = 8;
+        }
+
+        basic_slider_Value[3] = 1.0f; // + playerprefab
+        basic_slider_Value[2] = 0; // + playerprefab
 
         for (int i =0; i <weapon_array.Length; i++)
         {
@@ -127,6 +197,23 @@ public class InhenceManager : MonoBehaviour
                 for(int j = 0; j < slot_Type[i].transform.childCount; j++)
                 {
                     slot_Image[j] = slot_Type[i].transform.GetChild(j).GetComponent<Image>();
+                    switch (weaponType)
+                    {
+                        case 0:
+                            property_Slider[j].value = basic_slider_Value[j] + PlayerPrefs.GetFloat("ARSlot" + j, 0);
+
+                            break;
+                        case 1:
+                            property_Slider[j].value = basic_slider_Value[j] + PlayerPrefs.GetFloat("SRSlot" + j, 0);
+
+                            break;
+                        case 2:
+                            property_Slider[j].value = basic_slider_Value[j] + PlayerPrefs.GetFloat("GunSlot" + j, 0);
+
+                            break;
+
+                    }
+
                 }
             }
             else
@@ -136,7 +223,6 @@ public class InhenceManager : MonoBehaviour
 
             }
         }
-       
 
     }
 
@@ -150,6 +236,25 @@ public class InhenceManager : MonoBehaviour
         {
             weaponType = 0;
         }
+        if (weaponType == 0)
+        {
+            basic_slider_Value[0] = 5;
+            basic_slider_Value[1] = 25;
+
+        }
+        else if (weaponType == 1)
+        {
+            basic_slider_Value[0] = 30;
+            basic_slider_Value[1] = 5;
+        }
+        else
+        {
+            basic_slider_Value[0] = 8;
+            basic_slider_Value[1] = 8;
+        }
+
+        basic_slider_Value[3] = 1.0f; // + playerprefab
+        basic_slider_Value[2] = 0; // + playerprefab
 
         for (int i = 0; i < weapon_array.Length; i++)
         {
@@ -160,6 +265,22 @@ public class InhenceManager : MonoBehaviour
                 for (int j = 0; j < slot_Type[i].transform.childCount; j++)
                 {
                     slot_Image[j] = slot_Type[i].transform.GetChild(j).GetComponent<Image>();
+                    switch (weaponType)
+                    {
+                        case 0:
+                            property_Slider[j].value = basic_slider_Value[j] + PlayerPrefs.GetFloat("ARSlot" + j, 0);
+
+                            break;
+                        case 1:
+                            property_Slider[j].value = basic_slider_Value[j] + PlayerPrefs.GetFloat("SRSlot" + j, 0);
+
+                            break;
+                        case 2:
+                            property_Slider[j].value = basic_slider_Value[j] + PlayerPrefs.GetFloat("GunSlot" + j, 0);
+
+                            break;
+
+                    }
                 }
             }
             else
@@ -168,6 +289,8 @@ public class InhenceManager : MonoBehaviour
                 slot_Type[i].SetActive(false);
             }
         }
+
+        
     }
 
     public void OnClickBackToLobby()
