@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using UnityEngine.EventSystems;
 
 public class LobbyManager : MonoBehaviour
 {
@@ -14,21 +15,14 @@ public class LobbyManager : MonoBehaviour
     void Start()
     {
         checkTime = 0;
-        mainMapCamera.Priority = 1;
+        mainMapCamera.Priority = 0;
         punchKingMapCamera.Priority = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        checkTime += Time.deltaTime;
-        if (checkTime > 10.0f)
-        {
-            checkPriority = mainMapCamera.Priority;
-            mainMapCamera.Priority = punchKingMapCamera.Priority;
-            punchKingMapCamera.Priority = checkPriority;
-            checkTime = 0;
-        }
+
     }
 
     public void Training()
@@ -47,4 +41,5 @@ public class LobbyManager : MonoBehaviour
     {
         SceneManager.LoadScene("Inhence");
     }
+
 }
