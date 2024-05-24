@@ -237,7 +237,7 @@ public class Player_Shot : MonoBehaviour
                                 spawnSphere.GetComponent<Spawn_Sphere>().spawnLevel = 1.2f;
                                 sphere.GetComponent<Sphere_Trigger>().destroyLevel = 1.0f;
                                 break;
-
+                                  
                         }
 
 
@@ -246,12 +246,12 @@ public class Player_Shot : MonoBehaviour
                     if (hitData.transform.tag == "Target")
                     {
                         hit_Image.color = new Color(1, 1, 1, 1);
-                        PunchKingManager.curScore += 3;
+                        PunchKingManager.curScore += 5 + PlayerPrefs.GetFloat("ARSlot0", 0);
                     }
                     else if (hitData.transform.tag == "Head")
                     {
                         hit_Image.color = new Color(1, 0, 0, 1);
-                        PunchKingManager.curScore += 6;
+                        PunchKingManager.curScore += (5 + PlayerPrefs.GetFloat("ARSlot0", 0)) * 2;
                     }
                     else if (hitData.transform.GetComponent<Collider>() != null)
                     {
@@ -267,13 +267,34 @@ public class Player_Shot : MonoBehaviour
                    
                 }
             }
-            if (Input.GetKeyDown(KeyCode.R))
+            else
             {
-                curBulletCount = maxBulletCount;
-                textbulletCount.text = curBulletCount + " / " + maxBulletCount;
-                fire_anim.SetTrigger("isArReload");
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    curBulletCount = maxBulletCount;
+                    textbulletCount.text = curBulletCount + " / " + maxBulletCount;
+                    if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdle"))
+                    {
+                        fire_anim.SetTrigger("isArReload");
 
+                    }
+                    else if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleZoom"))
+                    {
+                        fire_anim.SetTrigger("isArZoomReload");
+
+                        zoom_Image.gameObject.SetActive(false);
+
+                        this.transform.localPosition += new Vector3(0, 0, -2);
+                        //fire_anim.SetBool("isArZoom", false);
+
+                    }
+                }
             }
+           
+        }
+        if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleReload"))
+        {
+            fire_anim.SetBool("isArZoom", false);
         }
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ S  R  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

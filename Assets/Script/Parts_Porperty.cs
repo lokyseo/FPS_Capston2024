@@ -7,62 +7,126 @@ using UnityEngine.UI;
 
 public class Parts_Porperty : MonoBehaviour
 {
-    public float rand_parts;
+    public int rand_parts;
     public float rand_Property;
     public string parts_str, property_str;
+
+    public int weaponType;
     void Start()
     {
-        rand_parts = Random.Range(1, 4);
-        switch(rand_parts) 
+        weaponType = Random.Range(0, 3);
+        switch (weaponType)
         {
-            case 1: //탄창
-                parts_str = "탄창";
-                rand_Property = Random.Range(1, 4);
-                if (rand_Property == 1)
-                    property_str = "장탄 수 +1";
-                else if (rand_Property == 2)
-                    property_str = "장전속도 +1";
-                else if (rand_Property == 3)
-                    property_str = "장탄 수 +1\n장전속도 +1";
+            case 0:
+                rand_parts = Random.Range(1, 5);
+                switch (rand_parts)
+                {
+                    case 1: //탄창
+                        parts_str = "탄창";
+                        rand_Property = Random.Range(5, 15);
+                        this.transform.tag = "BulletBox_Parts";
+                        break;
+                    case 2: //조준점
+                        parts_str = "조준경";
+                        rand_Property = Random.Range(2, 3);
+                        if(rand_Property == 2)
+                        {
+                            rand_Property = 2;
+                        }
+                        else
+                        {
+                            rand_Property = 4;
+                        }
+                        this.transform.tag = "Aim_Parts";
+                        break;
+                    case 3: //총알
+                        parts_str = "총알";
+                        rand_Property = Random.Range(1, 4);
+                        this.transform.tag = "Bullet_Parts";
+
+                        break;
+                    case 4: //손잡이
+                        parts_str = "손잡이";
+                        rand_Property = Random.Range(0, 1.0f);
+                        this.transform.tag = "handle_Parts";
+
+                        break;
+                }
+                this.GetComponent<Image>().color = Color.white;
+
                 break;
-            case 2: //조준점
-                parts_str = "조준경";
-                rand_Property = Random.Range(1, 4);
-                if (rand_Property == 1)
-                    property_str = "2배율";
-                else if (rand_Property == 2)
-                    property_str = "3배율";
-                else if (rand_Property == 3)
-                    property_str = "4배율";
+            case 1:
+                rand_parts = Random.Range(1, 5);
+                switch (rand_parts)
+                {
+                    case 1: //탄창
+                        parts_str = "탄창";
+                        rand_Property = Random.Range(1, 3);
+                        this.transform.tag = "BulletBox_Parts";
+                        break;
+                    case 2: //조준점
+                        parts_str = "조준경";
+                        rand_Property = Random.Range(2, 3);
+                        if (rand_Property == 2)
+                        {
+                            rand_Property = 4;
+                        }
+                        else
+                        {
+                            rand_Property = 6;
+                        }
+                        this.transform.tag = "Aim_Parts";
+                        break;
+                    case 3: //총알
+                        parts_str = "총알";
+                        rand_Property = Random.Range(5, 20);
+                        this.transform.tag = "Bullet_Parts";
+
+                        break;
+                    case 4: //손잡이
+                        parts_str = "탄창";
+                        rand_Property = Random.Range(0, 1.0f);
+                        this.transform.tag = "handle_Parts";
+
+                        break;
+                }
+
+                this.GetComponent<Image>().color = Color.black;
+
                 break;
-            case 3: //총알
-                parts_str = "총알";
-                rand_Property = Random.Range(1, 4);
-                if (rand_Property == 1)
-                    property_str = "장탄 수 +1";
-                else if (rand_Property == 2)
-                    property_str = "장전속도 +1";
-                else if (rand_Property == 3)
-                    property_str = "장탄 수 +1\n장전속도 +1";
-                break;
-            case 4: //손잡이
-                parts_str = "탄창";
-                rand_Property = Random.Range(1, 4);
-                if (rand_Property == 1)
-                    property_str = "장탄 수 +1";
-                else if (rand_Property == 2)
-                    property_str = "장전속도 +1";
-                else if (rand_Property == 3)
-                    property_str = "장탄 수 +1\n장전속도 +1";
-                break;
-            case 5: //투사체전용
+            case 2:
+                rand_parts = Random.Range(1, 4);
+                switch (rand_parts)
+                {
+                    case 1: //탄창
+                        parts_str = "탄창";
+                        rand_Property = Random.Range(2, 7);
+                        this.transform.tag = "BulletBox_Parts";
+                        break;
+                    case 2: //조준점
+                        parts_str = "조준경";
+                        rand_Property = Random.Range(2, 3);
+                        if (rand_Property == 2)
+                        {
+                            rand_Property = 1;
+                        }
+                        else
+                        {
+                            rand_Property = 2;
+                        }
+                        this.transform.tag = "Aim_Parts";
+                        break;
+                    case 3: //총알
+                        parts_str = "총알";
+                        rand_Property = Random.Range(3, 10);
+                        this.transform.tag = "Bullet_Parts";
+
+                        break;
+                }
+                this.GetComponent<Image>().color = Color.red;
 
                 break;
         }
+       
     }
-
-    void Update()
-    {
-    }
-  
 }

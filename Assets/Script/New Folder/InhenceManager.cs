@@ -23,13 +23,6 @@ public class InhenceManager : MonoBehaviour
     public int weaponType;
 
     //0 : AR, 1 : SR, 2 : Gun     총알 탄창 조준경 손잡이
-    /* AR
-     * 조준경 0, 데미지 : 5, 장전속도 : 1.0, 탄창 : 25
-     * SR
-     * 조준경 0, 데미지 : 30, 장전속도 : 1.0, 탄창 : 5
-     * Gun
-     * 조존경 0, 데미지 : 8. 장전속도 : 1.0, 탄창 : 8
-     */
 
     void Start()
     {
@@ -76,7 +69,8 @@ public class InhenceManager : MonoBehaviour
             for (int i = 0; i < 4; i++)
             {
                 float test = (basic_slider_Value[i] + Parts_Drag.property) - property_Slider[i].value;
-                if(Parts_Drag.saveGameObject.tag == property_Slider[i].tag)
+                if(Parts_Drag.saveGameObject.tag == property_Slider[i].tag && 
+                    weaponType == Parts_Drag.weapon_Type_static)
                 {
                     if (property_Slider[i].value < (basic_slider_Value[i] + Parts_Drag.property))
                     {
@@ -103,7 +97,8 @@ public class InhenceManager : MonoBehaviour
            // if (Parts_Drag.saveGameObject == null) return;
             for (int i = 0; i < 4; i++)
             {
-                if (Parts_Drag.saveGameObject.tag == property_Slider[i].tag)
+                if (Parts_Drag.saveGameObject.tag == property_Slider[i].tag &&
+                    weaponType == Parts_Drag.weapon_Type_static)
                 {
                   property_Image[i].transform.localScale = new Vector3(-1, 1, 1);
                   property_Image[i].rectTransform.sizeDelta = new Vector2(Parts_Drag.property * -(500 / property_Slider[i].maxValue), 0);
