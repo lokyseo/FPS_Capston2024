@@ -11,6 +11,7 @@ public class Parts_Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public static Vector3 startPosition;
     public static Transform startParent;
     public static float property;
+    public static int weapon_Type_static;
 
     [SerializeField]
     Transform onDragParent;
@@ -31,8 +32,9 @@ public class Parts_Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
         startPosition = this.transform.position;
         startParent = this.transform.parent;
+        weapon_Type_static = this.GetComponent<Parts_Porperty>().weaponType;
 
-        if(this.transform.parent.tag != "Inventory")
+        if (this.transform.parent.tag != "Inventory")
         {
             property = -this.GetComponent<Parts_Porperty>().rand_Property;
 
@@ -59,6 +61,7 @@ public class Parts_Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         this.GetComponent<CanvasGroup>().blocksRaycasts = true;
 
         property = 0;
+        weapon_Type_static = 3;
         if (transform.parent == onDragParent)
         {
             transform.position = startPosition;
