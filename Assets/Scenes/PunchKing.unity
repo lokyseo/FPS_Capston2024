@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15096,6 +15096,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1231758366}
   - component: {fileID: 1231758367}
+  - component: {fileID: 1231758368}
   m_Layer: 0
   m_Name: PlayerBody
   m_TagString: Untagged
@@ -15141,6 +15142,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1231758368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231758365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4bc23c2e6d21794f8fa3dfb1ec04c73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomx_Image: {fileID: 1515942786}
+  zoomx4_Image: {fileID: 788502326}
+  testCamera: {fileID: 627972656}
 --- !u!1 &1253863574
 GameObject:
   m_ObjectHideFlags: 0
@@ -20181,9 +20197,10 @@ GameObject:
   - component: {fileID: 6459205238497012861}
   - component: {fileID: 2933095334737308144}
   - component: {fileID: 1883406294893118263}
+  - component: {fileID: 6459205238497012862}
   m_Layer: 0
   m_Name: R_Hand
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26086,6 +26103,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2510040350183893019}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &6459205238497012862
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2530504968536149586}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -653043844983088931, guid: b27a65e00b6d68440872cd4b37a2ddc4, type: 3}
 --- !u!23 &6507809214297205413
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27015,13 +27054,36 @@ GameObject:
   - component: {fileID: 8223140905971761320}
   - component: {fileID: 6577875824603650444}
   - component: {fileID: 2304753228819200086}
+  - component: {fileID: 8589026610946674425}
   m_Layer: 0
   m_Name: LHand
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &8589026610946674425
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8589026610946674424}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6667224979231340753, guid: b27a65e00b6d68440872cd4b37a2ddc4, type: 3}
 --- !u!1 &8617181565466663676
 GameObject:
   m_ObjectHideFlags: 0

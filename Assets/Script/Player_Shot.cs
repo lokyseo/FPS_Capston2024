@@ -27,10 +27,10 @@ public class Player_Shot : MonoBehaviour
     [Header("펀치킹")]
     public Text textScore;
 
-    int curBulletCount;
-    int maxBulletCount;
+    float curBulletCount;
+    float maxBulletCount;
 
-    int weaponType; //권총 : 0, AR : 1, SR : 2
+    public static int weaponType; //권총 : 0, AR : 1, SR : 2
 
 
     [SerializeField]
@@ -38,6 +38,7 @@ public class Player_Shot : MonoBehaviour
 
     private float cameraRotationLimit;
     private float currentCameraRotationX;
+
     public float adsadasd;
     public float adsadasd2;
 
@@ -51,6 +52,8 @@ public class Player_Shot : MonoBehaviour
         maxBulletCount = 6;
         curBulletCount = maxBulletCount;
         fire_anim = anim_Gun.GetComponent<Animator>();
+
+        PlayerPrefs.SetFloat("SRSlot3", 1.2f);
     }
 
     void Update()
@@ -63,23 +66,15 @@ public class Player_Shot : MonoBehaviour
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 권 총 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockIdle") && fire_anim.GetBool("isGunZoom") == false||
-            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockZoom") && fire_anim.GetBool("isGunZoom") == true) 
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockZoomIdle") && fire_anim.GetBool("isGunZoom") == true) 
         {
             if (Input.GetKeyDown(KeyCode.Mouse0) && curBulletCount > 0)
             {
                 curBulletCount--;
                 textbulletCount.text = curBulletCount + " / " + maxBulletCount;
 
-                if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockIdle"))
-                {
-                    fire_anim.SetTrigger("isGunShot");
+                fire_anim.SetTrigger("isGunShot");
 
-                }
-                else if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockZoom"))
-                {
-                    fire_anim.SetTrigger("isGunZoomShot");
-
-                }
                 adsadasd += 5.0f;
                 adsadasd2 = Random.Range(-0.2f, 0.21f);
                 gunFire.Play();
@@ -154,11 +149,6 @@ public class Player_Shot : MonoBehaviour
                         spawnSphere.GetComponent<Spawn_Sphere>().count_Score++;
                     }
 
-                    //if(hitData.transform.GetComponent<Collider>() != null)
-                    //{
-                    //    Instantiate(bulletMarks, hitData.point, Quaternion.FromToRotation(Vector3.forward, hitData.normal));
-                    //}
-
                 }
             }
             if (Input.GetKeyDown(KeyCode.R))
@@ -167,28 +157,49 @@ public class Player_Shot : MonoBehaviour
                 textbulletCount.text = curBulletCount + " / " + maxBulletCount;
                 fire_anim.SetTrigger("isGunReload");
 
+                if(fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockZoomIdle"))
+                {
+                    zoom_Image.gameObject.SetActive(false);
+                    this.GetComponent<Camera>().fieldOfView += 10;
+                }
+
             }
             
         }
 
+        if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockReload"))
+        {
+            fire_anim.SetBool("isGunZoom", false);
+        }
+
+
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ A R @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdle") && fire_anim.GetBool("isArZoom") == false ||
-            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleZoom") && fire_anim.GetBool("isArZoom") == true)
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleZoomIdle") && fire_anim.GetBool("isArZoom") == true ||
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdleAddGrip") && fire_anim.GetBool("isArZoom") == false)
         {
             if (Input.GetKey(KeyCode.Mouse0) && curBulletCount > 0)
             {
                 curBulletCount--;
                 textbulletCount.text = curBulletCount + " / " + maxBulletCount;
+
+
                 if(fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdle"))
                 {
                     fire_anim.SetTrigger("isArShot");
 
                 }
-                else if(fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleZoom"))
+                else if(fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleZoomIdle"))
                 {
-                    fire_anim.SetTrigger("isArZoomShot");
+                    fire_anim.SetTrigger("isArShot");
 
                 }
+                else if(fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdleAddGrip"))
+                {
+                    fire_anim.SetTrigger("isArShot");
+                }
+
+                //반동
                 adsadasd += 2.0f;
                 adsadasd2 = Random.Range(-0.2f, 0.21f);
                 arFire.Play();
@@ -278,28 +289,33 @@ public class Player_Shot : MonoBehaviour
                         fire_anim.SetTrigger("isArReload");
 
                     }
-                    else if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleZoom"))
+                    else if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleZoomIdle"))
                     {
-                        fire_anim.SetTrigger("isArZoomReload");
+
+                        fire_anim.SetTrigger("isArReload");
 
                         zoom_Image.gameObject.SetActive(false);
-
-                        this.transform.localPosition += new Vector3(0, 0, -2);
-                        //fire_anim.SetBool("isArZoom", false);
-
+                        this.GetComponent<Camera>().fieldOfView += 10;
+                    }
+                    else if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdleAddGrip"))
+                    {
+                        fire_anim.SetTrigger("isArReload");
                     }
                 }
             }
            
         }
-        if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleReload"))
+        if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleReload") ||
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleReloadAddGrip"))
         {
             fire_anim.SetBool("isArZoom", false);
         }
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ S  R  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("SniperRifleIdle") && fire_anim.GetBool("isSrZoom") == false ||
-            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("SniperRifleZoom") && fire_anim.GetBool("isSrZoom") == true)
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("SniperRifleZoomIdle") && fire_anim.GetBool("isSrZoom") == true ||
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("SniperRifleIdleAddGrip") && fire_anim.GetBool("isSrZoom") == false)
+
         {
             if (Input.GetKeyDown(KeyCode.Mouse0) && curBulletCount > 0)
             {
@@ -310,11 +326,20 @@ public class Player_Shot : MonoBehaviour
                     fire_anim.SetTrigger("isSrShot");
 
                 }
-                else if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("SniperRifleZoom"))
+                else if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("SniperRifleZoomIdle"))
                 {
-                    fire_anim.SetTrigger("isSrZoomShot");
+                    fire_anim.SetTrigger("isSrShot");
+                    fire_anim.SetBool("isSrZoom", false);
+
+                    zoom_x4Image.gameObject.SetActive(false);
+                    this.GetComponent<Camera>().fieldOfView += 30;
 
                 }
+                else if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("SniperRifleIdleAddGrip"))
+                {
+                    fire_anim.SetTrigger("isSrShot");
+                }
+
                 adsadasd += 10.0f;
                 adsadasd2 = Random.Range(-0.2f, 0.21f);
                 srFire.Play();
@@ -393,39 +418,75 @@ public class Player_Shot : MonoBehaviour
                     
                 }
             }
+    
+
             if (Input.GetKeyDown(KeyCode.R))
             {
                 curBulletCount = maxBulletCount;
                 textbulletCount.text = curBulletCount + " / " + maxBulletCount;
+
                 fire_anim.SetTrigger("isSrReload");
 
+                if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("SniperRifleZoomIdle"))
+                {
+                    zoom_x4Image.gameObject.SetActive(false);
+
+                    this.GetComponent<Camera>().fieldOfView += 30;
+
+                }
+
             }
+
         }
 
+        if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("SniperRifleReload") ||
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("SniperRifleReloadAddGrip"))
+        {
+            fire_anim.SetBool("isSrZoom", false);
+        }
+
+
+        // 무기 줌 우클릭
+        if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("SniperRifleIdle")||
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("SniperRifleZoomIdle") &&
+           fire_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.95f ||
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("SniperRifleIdleAddGrip") ||
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdle") ||
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleZoomIdle") &&
+           fire_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.95f ||
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdleAddGrip") || 
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockIdle") ||
+            fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockZoomIdle") &&
+           fire_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.95f)
+        {
+            ZoomWeapon();
+
+        }
+        //------------------------------------------------------------무기 스왑
+
+        SwapWeapon();
+    }
+
+
+    void ZoomWeapon()
+    {
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             switch (weaponType)
             {
-                case 1 :
+                case 1:
 
                     if (zoom_Image.gameObject.activeSelf)
                     {
                         fire_anim.SetBool("isArZoom", false);
 
                         zoom_Image.gameObject.SetActive(false);
-
-                        this.transform.localPosition += new Vector3(0, 0, -2);
-
+                        this.GetComponent<Camera>().fieldOfView += 10;
 
                     }
                     else
                     {
                         fire_anim.SetBool("isArZoom", true);
-
-                        zoom_Image.gameObject.SetActive(true);
-
-                        this.transform.localPosition += new Vector3(0, 0, 2);
-
 
                     }
 
@@ -434,18 +495,15 @@ public class Player_Shot : MonoBehaviour
                     if (zoom_x4Image.gameObject.activeSelf)
                     {
                         fire_anim.SetBool("isSrZoom", false);
-
+                        fire_anim.SetBool("isSrNoZoom", true);
 
                         zoom_x4Image.gameObject.SetActive(false);
+                        this.GetComponent<Camera>().fieldOfView += 30;
 
-                        this.transform.localPosition += new Vector3(0, 0, -10);
                     }
                     else
                     {
                         fire_anim.SetBool("isSrZoom", true);
-                        zoom_x4Image.gameObject.SetActive(true);
-
-                        this.transform.localPosition += new Vector3(0, 0, 10);
                     }
 
                     break;
@@ -453,33 +511,18 @@ public class Player_Shot : MonoBehaviour
                     if (zoom_Image.gameObject.activeSelf)
                     {
                         fire_anim.SetBool("isGunZoom", false);
-
                         zoom_Image.gameObject.SetActive(false);
-
-                        this.transform.localPosition += new Vector3(0, 0, -1);
-
-
+                        this.GetComponent<Camera>().fieldOfView += 10;
                     }
                     else
                     {
                         fire_anim.SetBool("isGunZoom", true);
-
-                        zoom_Image.gameObject.SetActive(true);
-
-                        this.transform.localPosition += new Vector3(0, 0, 1);
-
-
                     }
                     break;
             }
         }
 
-
-        //------------------------------------------------------------무기 스왑
-
-        SwapWeapon();
     }
-
 
 
     private void CameraRotation()
@@ -501,11 +544,39 @@ public class Player_Shot : MonoBehaviour
     }
     void SwapWeapon()
     {
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            fire_anim.SetBool("isArZoom", false);
+            fire_anim.SetBool("isGunZoom", false);
+            fire_anim.SetBool("isSrZoom", false);
+            fire_anim.SetBool("isSrNoZoom", true);
+
+            if (zoom_Image.gameObject.activeSelf)
+            {
+                zoom_Image.gameObject.SetActive(false);
+                this.GetComponent<Camera>().fieldOfView += 10;
+
+            }
+            else if (zoom_x4Image.gameObject.activeSelf)
+            {
+                zoom_x4Image.gameObject.SetActive(false);
+                this.GetComponent<Camera>().fieldOfView += 30;
+            }
+
             fire_anim.SetTrigger("isArSet");
+
+            if (PlayerPrefs.GetFloat("ARSlot3", 0) == 0)
+            {
+                fire_anim.SetBool("isGripSet", false);
+
+            }
+            else
+            {
+                fire_anim.SetBool("isGripSet", true);
+            }
             weaponType = 1;
-            maxBulletCount = 25;
+            maxBulletCount = 25 + PlayerPrefs.GetFloat("ARSlot1", 0);
             curBulletCount = maxBulletCount;
             textbulletCount.text = curBulletCount + " / " + maxBulletCount;
 
@@ -513,18 +584,65 @@ public class Player_Shot : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
+            fire_anim.SetBool("isArZoom", false);
+            fire_anim.SetBool("isGunZoom", false);
+            fire_anim.SetBool("isSrZoom", false);
+            fire_anim.SetBool("isSrNoZoom", true);
+
+            if (zoom_Image.gameObject.activeSelf)
+            {
+                zoom_Image.gameObject.SetActive(false);
+                this.GetComponent<Camera>().fieldOfView += 10;
+
+            }
+            else if (zoom_x4Image.gameObject.activeSelf)
+            {
+                zoom_x4Image.gameObject.SetActive(false);
+                this.GetComponent<Camera>().fieldOfView += 30;
+            }
+
             fire_anim.SetTrigger("isSrSet");
+
+            if (PlayerPrefs.GetFloat("SRSlot3", 0) == 0)
+            {
+                fire_anim.SetBool("isGripSet", false);
+                fire_anim.SetBool("isSrNoZoom", true);
+
+            }
+            else
+            {
+                fire_anim.SetBool("isGripSet", true);
+                fire_anim.SetBool("isSrNoZoom", true);
+
+            }
             weaponType = 2;
-            maxBulletCount = 5;
+            maxBulletCount = 5 + PlayerPrefs.GetFloat("SRSlot1", 0);
             curBulletCount = maxBulletCount;
             textbulletCount.text = curBulletCount + " / " + maxBulletCount;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
+            fire_anim.SetBool("isArZoom", false);
+            fire_anim.SetBool("isGunZoom", false);
+            fire_anim.SetBool("isSrZoom", false);
+            fire_anim.SetBool("isSrNoZoom", true);
+
+            if (zoom_Image.gameObject.activeSelf)
+            {
+                zoom_Image.gameObject.SetActive(false);
+                this.GetComponent<Camera>().fieldOfView += 10;
+
+            }
+            else if (zoom_x4Image.gameObject.activeSelf)
+            {
+                zoom_x4Image.gameObject.SetActive(false);
+                this.GetComponent<Camera>().fieldOfView += 30;
+            }
+
             fire_anim.SetTrigger("isGunSet");
             weaponType = 0;
-            maxBulletCount = 8;
+            maxBulletCount = 8 + PlayerPrefs.GetFloat("GunSlot1", 0);
             curBulletCount = maxBulletCount;
             textbulletCount.text = curBulletCount + " / " + maxBulletCount;
 
