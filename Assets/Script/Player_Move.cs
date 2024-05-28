@@ -10,12 +10,10 @@ public class Player_Move : MonoBehaviour
     private float walkSpeed;
 
     public float lookSensitivity_H;
-    public float lookSensitivity_V;
     private float test;
 
     [SerializeField]
     private float cameraRotationLimit;
-    private float currentCameraRotationX;
 
     [SerializeField]
     //private Camera theCamera;
@@ -25,8 +23,8 @@ public class Player_Move : MonoBehaviour
     void Start()
     {
 
-        myRigid = GetComponent<Rigidbody>(); 
-        
+        myRigid = GetComponent<Rigidbody>();
+        lookSensitivity_H = PlayerPrefs.GetFloat("VerticalSensitivity", 0.8f);
     }
 
     void Update()  

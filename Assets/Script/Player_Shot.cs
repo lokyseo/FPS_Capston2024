@@ -33,7 +33,6 @@ public class Player_Shot : MonoBehaviour
     public static int weaponType; //권총 : 0, AR : 1, SR : 2
 
 
-    [SerializeField]
     public float lookSensitivity_V;
 
     private float cameraRotationLimit;
@@ -532,10 +531,6 @@ public class Player_Shot : MonoBehaviour
         currentCameraRotationX -= _cameraRotationX;
         currentCameraRotationX = Mathf.Clamp(currentCameraRotationX, -cameraRotationLimit, cameraRotationLimit);
 
-        //if(adsadasd != 0)
-        //{
-        //    adsadasd -= 0.5f *Time.deltaTime
-        //}
         adsadasd = Mathf.Lerp(adsadasd, 0, Time.deltaTime/adsadasd * 10);
 
 
@@ -564,7 +559,6 @@ public class Player_Shot : MonoBehaviour
                 this.GetComponent<Camera>().fieldOfView += 30;
             }
 
-            fire_anim.SetTrigger("isArSet");
 
             if (PlayerPrefs.GetFloat("ARSlot3", 0) == 0)
             {
@@ -575,6 +569,9 @@ public class Player_Shot : MonoBehaviour
             {
                 fire_anim.SetBool("isGripSet", true);
             }
+
+            fire_anim.SetTrigger("isArSet");
+
             weaponType = 1;
             maxBulletCount = 25 + PlayerPrefs.GetFloat("ARSlot1", 0);
             curBulletCount = maxBulletCount;
@@ -601,7 +598,6 @@ public class Player_Shot : MonoBehaviour
                 this.GetComponent<Camera>().fieldOfView += 30;
             }
 
-            fire_anim.SetTrigger("isSrSet");
 
             if (PlayerPrefs.GetFloat("SRSlot3", 0) == 0)
             {
@@ -615,6 +611,9 @@ public class Player_Shot : MonoBehaviour
                 fire_anim.SetBool("isSrNoZoom", true);
 
             }
+
+            fire_anim.SetTrigger("isSrSet");
+
             weaponType = 2;
             maxBulletCount = 5 + PlayerPrefs.GetFloat("SRSlot1", 0);
             curBulletCount = maxBulletCount;

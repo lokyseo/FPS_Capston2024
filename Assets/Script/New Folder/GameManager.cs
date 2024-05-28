@@ -23,10 +23,12 @@ public class GameManager : MonoBehaviour
         vertical_Slider.maxValue = 10;
         vertical_Slider.minValue = 0.01f;
         vertical_Slider.value = PlayerPrefs.GetFloat("VerticalSensitivity", 0.8f);
+        vertical_Senesitivity.text = PlayerPrefs.GetFloat("VerticalSensitivity", 0.8f).ToString("F1");
 
         horizontal_Slider.maxValue = 10;
         horizontal_Slider.minValue = 0.01f;
         horizontal_Slider.value = PlayerPrefs.GetFloat("HorizontalSensitivity", 0.8f);
+        horizontal_Senesitivity.text = PlayerPrefs.GetFloat("HorizontalSensitivity", 0.8f).ToString("F1");
 
 
         Cursor.lockState = CursorLockMode.Locked;   // 마우스 커서를 화면 안에서 고정
@@ -52,10 +54,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-
-        }
 
     }
     public void BackToLobby()
@@ -65,14 +63,15 @@ public class GameManager : MonoBehaviour
 
     public void VerticalValueChanged()
     {
-
-        playermove_scr.lookSensitivity_V = vertical_Slider.value;
+        //playermove_scr.lookSensitivity_V = vertical_Slider.value;
         vertical_Senesitivity.text = vertical_Slider.value.ToString("F2");
         PlayerPrefs.SetFloat("VerticalSensitivity", vertical_Slider.value);
 
     }
     public void HorizontalValueChanged()
     {
+        PlayerPrefs.SetFloat("HorizontalSensitivity", vertical_Slider.value);
+
         playermove_scr.lookSensitivity_H = horizontal_Slider.value;
         horizontal_Senesitivity.text = horizontal_Slider.value.ToString("F2");
         PlayerPrefs.SetFloat("HorizontalSensitivity", horizontal_Slider.value);
