@@ -20,15 +20,20 @@ public class Player_Move : MonoBehaviour
     private Rigidbody myRigid;
     public Vector3 _velocity;
 
+    public GameObject esc_Menu;
+
     void Start()
     {
 
         myRigid = GetComponent<Rigidbody>();
-        lookSensitivity_H = PlayerPrefs.GetFloat("VerticalSensitivity", 0.8f);
+        lookSensitivity_H = PlayerPrefs.GetFloat("VerticalSensitivity", 1.8f);
     }
 
     void Update()  
     {
+        if (esc_Menu.activeSelf) return;
+
+
         Move();                 // 1️ 키보드 입력에 따라 이동
         CharacterRotation();    // 3️ 마우스 좌우(X) 움직임에 따라 캐릭터 Y 축 회전 
 

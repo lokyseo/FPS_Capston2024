@@ -6038,7 +6038,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB3CC\uC544\uAC00\uAE30"
+  m_Text: "\uC885\uB8CC\uD558\uAE30"
 --- !u!222 &289418182
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6715,6 +6715,7 @@ MonoBehaviour:
   cameraRotationLimit: 50
   myRigid: {fileID: 0}
   _velocity: {x: 0, y: 0, z: 0}
+  esc_Menu: {fileID: 1052994533}
 --- !u!54 &397453466
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12769,8 +12770,9 @@ MonoBehaviour:
   srFire: {fileID: 422017798}
   textScore: {fileID: 0}
   lookSensitivity_V: 2
-  adsadasd: 0
-  adsadasd2: 0
+  recoil_Vertical: 0
+  recoil_Horizontal: 0
+  esc_Menu: {fileID: 1052994533}
 --- !u!1001 &673655610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18367,7 +18369,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1055343292}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: BackToLobby
         m_Mode: 1

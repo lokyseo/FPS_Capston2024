@@ -14,7 +14,6 @@ public class Save_Slot : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log(scene.name);
         if (scene.name.Contains("In"))
         {
             gameObject.SetActive(true);

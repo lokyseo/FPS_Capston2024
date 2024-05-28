@@ -22,10 +22,14 @@ public class InhenceManager : MonoBehaviour
     public GameObject[] weapon_array;
     public int weaponType;
 
+    public Text[] slider_value_text;
+
     //0 : AR, 1 : SR, 2 : Gun     총알 탄창 조준경 손잡이
 
     void Start()
     {
+         PlayerPrefs.DeleteAll();
+
         weaponType = 0;
         isChangedParts = false;
         //초기화
@@ -119,13 +123,14 @@ public class InhenceManager : MonoBehaviour
 
         if (isChangedParts )
         {
-            for (int i = 0; i < slot_Image.Length; i++)
+            for (int i = 0; i < slot_Type[weaponType].transform.childCount; i++)
             {
                 temp_slider_Value[i] = 0;
 
                 if (slot_Image[i].transform.childCount > 0)
                 {
                     temp_slider_Value[i] += slot_Image[i].GetComponentInChildren<Parts_Porperty>().rand_Property;
+
                     switch (weaponType)
                     {
                         case 0:
@@ -144,12 +149,37 @@ public class InhenceManager : MonoBehaviour
                     }
 
                 }
+                else
+                {
+                    switch (weaponType)
+                    {
+                        case 0:
+                            PlayerPrefs.SetFloat("ARSlot" + i, 0);
+
+                            break;
+                        case 1:
+                            PlayerPrefs.SetFloat("SRSlot" + i, 0);
+
+                            break;
+                        case 2:
+                            PlayerPrefs.SetFloat("GunSlot" + i, 0);
+
+                            break;
+
+                    }
+
+                }
 
                 property_Slider[i].value = basic_slider_Value[i] + temp_slider_Value[i];//test
 
             }
 
             isChangedParts = false;
+        }
+
+        for(int i = 0; i <slider_value_text.Length; i++)
+        {
+            slider_value_text[i].text = property_Slider[i].value.ToString("F2");
         }
     }
 
