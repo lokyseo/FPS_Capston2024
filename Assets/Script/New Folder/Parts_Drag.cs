@@ -16,6 +16,8 @@ public class Parts_Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     [SerializeField]
     Transform onDragParent;
 
+
+
     void Start()
     {
         
@@ -23,7 +25,6 @@ public class Parts_Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     void Update()
     {
-        
     }
 
     public void OnBeginDrag(PointerEventData eventData)

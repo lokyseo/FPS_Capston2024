@@ -6,7 +6,16 @@ using UnityEngine.EventSystems;
 
 public class Slot_Drag : MonoBehaviour, IDropHandler
 {
+    public GameObject manager;
+    public int weaponType;
+    // weaponType = manager.GetComponent<InhenceManager>().weaponType;
 
+
+    void Update()
+    {
+        weaponType = manager.GetComponent<InhenceManager>().weaponType;
+
+    }
     GameObject Icon()
     {
         if (transform.childCount > 0)
@@ -42,7 +51,7 @@ public class Slot_Drag : MonoBehaviour, IDropHandler
         {
             if (Icon() == null)
             {
-                if (Parts_Drag.saveGameObject.tag == this.gameObject.tag)
+                if (Parts_Drag.saveGameObject.tag == this.gameObject.tag && Parts_Drag.weapon_Type_static == weaponType)
                 {
                     Parts_Drag.saveGameObject.transform.SetParent(this.transform);
                     Parts_Drag.saveGameObject.transform.position = transform.position;
@@ -52,7 +61,7 @@ public class Slot_Drag : MonoBehaviour, IDropHandler
             }
             else
             {
-                if (Parts_Drag.saveGameObject.tag == this.gameObject.tag)
+                if (Parts_Drag.saveGameObject.tag == this.gameObject.tag && Parts_Drag.weapon_Type_static == weaponType)
                 {
                     Icon().transform.position = Parts_Drag.startPosition;
                     Icon().transform.SetParent(Parts_Drag.startParent);

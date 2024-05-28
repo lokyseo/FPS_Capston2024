@@ -19,40 +19,67 @@ public class Player_Shot : MonoBehaviour
     public GameObject spawnSphere;
     public GameObject sphere;
     public GameObject anim_Gun;
+    public GameObject esc_Menu;
 
+    [Header("파티클")]
     public ParticleSystem gunFire;
     public ParticleSystem arFire;
     public ParticleSystem srFire;
     Animator fire_anim;
+
     [Header("펀치킹")]
     public Text textScore;
 
     float curBulletCount;
     float maxBulletCount;
+    float gunScope;
+    float arScope;
+    float srScope;
+    float gunDamage;
+    float arDamage;
+    float srDamage;
+
 
     public static int weaponType; //권총 : 0, AR : 1, SR : 2
 
 
-    public float lookSensitivity_V;
+    private float lookSensitivity_V; //수직감도
 
     private float cameraRotationLimit;
     private float currentCameraRotationX;
 
-    public float adsadasd;
-    public float adsadasd2;
+    private float recoil_Vertical; //수직반동
+    private float recoil_Horizontal;//수평반동
+
 
 
     void Start()
     {
-        adsadasd = 0;
+        recoil_Vertical = 0;
+        recoil_Horizontal = 0;
         lookSensitivity_V = 2;
         cameraRotationLimit = 50;
+
         weaponType = 0;
-        maxBulletCount = 6;
+
+        maxBulletCount = 8 + PlayerPrefs.GetFloat("GunSlot1", 0);
         curBulletCount = maxBulletCount;
         fire_anim = anim_Gun.GetComponent<Animator>();
 
-        PlayerPrefs.SetFloat("SRSlot3", 1.2f);
+        lookSensitivity_V = PlayerPrefs.GetFloat("HorizontalSensitivity", 1.8f);
+
+
+        //파츠 손잡이 적용
+        fire_anim.SetFloat("ArReloadSpeed", PlayerPrefs.GetFloat("ARSlot3", 0) + 1.0f);
+        fire_anim.SetFloat("SrReloadSpeed", PlayerPrefs.GetFloat("SRSlot3", 0) + 1.0f);
+        //파츠 조준경 적용
+        gunScope = 5 * PlayerPrefs.GetFloat("GunSlot2", 0);
+        arScope = 5 * PlayerPrefs.GetFloat("ARSlot2", 0);
+        srScope = 5 * PlayerPrefs.GetFloat("SRSlot2", 0);
+        //파츠 총알 적용
+        gunDamage = 10 + PlayerPrefs.GetFloat("GunSlot0", 0);
+        arDamage = 5 + PlayerPrefs.GetFloat("ARSlot0", 0);
+        srDamage = 30 + PlayerPrefs.GetFloat("SRSlot0", 0);
     }
 
     void Update()
@@ -60,8 +87,13 @@ public class Player_Shot : MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward * 100, Color.red);
         //if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockSet") &&
         //   fire_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.95f)
-        CameraRotation();
 
+        if(esc_Menu.activeSelf == true)
+        {
+            return;
+        }
+        CameraRotation();
+        
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 권 총 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockIdle") && fire_anim.GetBool("isGunZoom") == false||
@@ -74,8 +106,8 @@ public class Player_Shot : MonoBehaviour
 
                 fire_anim.SetTrigger("isGunShot");
 
-                adsadasd += 5.0f;
-                adsadasd2 = Random.Range(-0.2f, 0.21f);
+                recoil_Vertical += 5.0f;
+                recoil_Horizontal = Random.Range(-0.2f, 0.21f);
                 gunFire.Play();
 
                 Ray ray = new Ray(transform.position, transform.forward);
@@ -130,12 +162,12 @@ public class Player_Shot : MonoBehaviour
                     if (hitData.transform.tag == "Target")
                     {
                         hit_Image.color = new Color(1, 1, 1, 1);
-                        PunchKingManager.curScore += 10;
+                        PunchKingManager.curScore += gunDamage;
                     }
                     else if (hitData.transform.tag == "Head")
                     {
                         hit_Image.color = new Color(1, 0, 0, 1);
-                        PunchKingManager.curScore += 20;
+                        PunchKingManager.curScore += (gunDamage * 2);
                     }
                     else if(hitData.transform.GetComponent<Collider>() != null)
                     {
@@ -159,7 +191,7 @@ public class Player_Shot : MonoBehaviour
                 if(fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockZoomIdle"))
                 {
                     zoom_Image.gameObject.SetActive(false);
-                    this.GetComponent<Camera>().fieldOfView += 10;
+                    this.GetComponent<Camera>().fieldOfView = 60;
                 }
 
             }
@@ -183,24 +215,24 @@ public class Player_Shot : MonoBehaviour
                 textbulletCount.text = curBulletCount + " / " + maxBulletCount;
 
 
-                if(fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdle"))
+                if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdle"))
                 {
                     fire_anim.SetTrigger("isArShot");
 
                 }
-                else if(fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleZoomIdle"))
+                else if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleZoomIdle"))
                 {
                     fire_anim.SetTrigger("isArShot");
 
                 }
-                else if(fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdleAddGrip"))
+                else if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdleAddGrip"))
                 {
                     fire_anim.SetTrigger("isArShot");
                 }
 
                 //반동
-                adsadasd += 2.0f;
-                adsadasd2 = Random.Range(-0.2f, 0.21f);
+                recoil_Vertical += 2.0f;
+                recoil_Horizontal = Random.Range(-0.2f, 0.21f);
                 arFire.Play();
 
                 Ray ray = new Ray(transform.position, transform.forward);
@@ -247,7 +279,7 @@ public class Player_Shot : MonoBehaviour
                                 spawnSphere.GetComponent<Spawn_Sphere>().spawnLevel = 1.2f;
                                 sphere.GetComponent<Sphere_Trigger>().destroyLevel = 1.0f;
                                 break;
-                                  
+
                         }
 
 
@@ -256,12 +288,12 @@ public class Player_Shot : MonoBehaviour
                     if (hitData.transform.tag == "Target")
                     {
                         hit_Image.color = new Color(1, 1, 1, 1);
-                        PunchKingManager.curScore += 5 + PlayerPrefs.GetFloat("ARSlot0", 0);
+                        PunchKingManager.curScore += arDamage;
                     }
                     else if (hitData.transform.tag == "Head")
                     {
                         hit_Image.color = new Color(1, 0, 0, 1);
-                        PunchKingManager.curScore += (5 + PlayerPrefs.GetFloat("ARSlot0", 0)) * 2;
+                        PunchKingManager.curScore += (arDamage * 2);
                     }
                     else if (hitData.transform.GetComponent<Collider>() != null)
                     {
@@ -274,35 +306,34 @@ public class Player_Shot : MonoBehaviour
                         spawnSphere.GetComponent<Spawn_Sphere>().count_Score++;
                     }
 
-                   
+
                 }
             }
-            else
+
+            if (Input.GetKeyDown(KeyCode.R))
             {
-                if (Input.GetKeyDown(KeyCode.R))
+                curBulletCount = maxBulletCount;
+                textbulletCount.text = curBulletCount + " / " + maxBulletCount;
+                if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdle"))
                 {
-                    curBulletCount = maxBulletCount;
-                    textbulletCount.text = curBulletCount + " / " + maxBulletCount;
-                    if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdle"))
-                    {
-                        fire_anim.SetTrigger("isArReload");
+                    fire_anim.SetTrigger("isArReload");
 
-                    }
-                    else if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleZoomIdle"))
-                    {
+                }
+                else if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleZoomIdle"))
+                {
 
-                        fire_anim.SetTrigger("isArReload");
+                    fire_anim.SetTrigger("isArReload");
 
-                        zoom_Image.gameObject.SetActive(false);
-                        this.GetComponent<Camera>().fieldOfView += 10;
-                    }
-                    else if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdleAddGrip"))
-                    {
-                        fire_anim.SetTrigger("isArReload");
-                    }
+                    zoom_Image.gameObject.SetActive(false);
+                    this.GetComponent<Camera>().fieldOfView = 60;
+                }
+                else if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleIdleAddGrip"))
+                {
+                    fire_anim.SetTrigger("isArReload");
                 }
             }
-           
+
+
         }
         if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleReload") ||
             fire_anim.GetCurrentAnimatorStateInfo(0).IsName("AssaultRifleReloadAddGrip"))
@@ -331,7 +362,7 @@ public class Player_Shot : MonoBehaviour
                     fire_anim.SetBool("isSrZoom", false);
 
                     zoom_x4Image.gameObject.SetActive(false);
-                    this.GetComponent<Camera>().fieldOfView += 30;
+                    this.GetComponent<Camera>().fieldOfView = 60;
 
                 }
                 else if (fire_anim.GetCurrentAnimatorStateInfo(0).IsName("SniperRifleIdleAddGrip"))
@@ -339,8 +370,8 @@ public class Player_Shot : MonoBehaviour
                     fire_anim.SetTrigger("isSrShot");
                 }
 
-                adsadasd += 10.0f;
-                adsadasd2 = Random.Range(-0.2f, 0.21f);
+                recoil_Vertical += 10.0f;
+                recoil_Horizontal = Random.Range(-0.2f, 0.21f);
                 srFire.Play();
 
                 Ray ray = new Ray(transform.position, transform.forward);
@@ -396,12 +427,12 @@ public class Player_Shot : MonoBehaviour
                     if (hitData.transform.tag == "Target")
                     {
                         hit_Image.color = new Color(1, 1, 1, 1);
-                        PunchKingManager.curScore += 30;
+                        PunchKingManager.curScore += srDamage;
                     }
                     else if (hitData.transform.tag == "Head")
                     {
                         hit_Image.color = new Color(1, 0, 0, 1);
-                        PunchKingManager.curScore += 60;
+                        PunchKingManager.curScore += (srDamage * 2);
                     }
                     else if (hitData.transform.GetComponent<Collider>() != null)
                     {
@@ -430,7 +461,7 @@ public class Player_Shot : MonoBehaviour
                 {
                     zoom_x4Image.gameObject.SetActive(false);
 
-                    this.GetComponent<Camera>().fieldOfView += 30;
+                    this.GetComponent<Camera>().fieldOfView = 60;
 
                 }
 
@@ -458,6 +489,7 @@ public class Player_Shot : MonoBehaviour
             fire_anim.GetCurrentAnimatorStateInfo(0).IsName("GlockZoomIdle") &&
            fire_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.95f)
         {
+            
             ZoomWeapon();
 
         }
@@ -474,49 +506,63 @@ public class Player_Shot : MonoBehaviour
             switch (weaponType)
             {
                 case 1:
-
-                    if (zoom_Image.gameObject.activeSelf)
-                    {
-                        fire_anim.SetBool("isArZoom", false);
-
-                        zoom_Image.gameObject.SetActive(false);
-                        this.GetComponent<Camera>().fieldOfView += 10;
-
-                    }
+                    if (PlayerPrefs.GetFloat("ARSlot2", 0) == 0) return;
                     else
                     {
-                        fire_anim.SetBool("isArZoom", true);
+                        if (zoom_Image.gameObject.activeSelf)
+                        {
+                            fire_anim.SetBool("isArZoom", false);
+
+                            zoom_Image.gameObject.SetActive(false);
+                            this.GetComponent<Camera>().fieldOfView = 60;
+
+                        }
+                        else
+                        {
+                            fire_anim.SetBool("isArZoom", true);
+
+                        }
 
                     }
+
 
                     break;
                 case 2:
-                    if (zoom_x4Image.gameObject.activeSelf)
-                    {
-                        fire_anim.SetBool("isSrZoom", false);
-                        fire_anim.SetBool("isSrNoZoom", true);
-
-                        zoom_x4Image.gameObject.SetActive(false);
-                        this.GetComponent<Camera>().fieldOfView += 30;
-
-                    }
+                    if (PlayerPrefs.GetFloat("SRSlot2", 0) == 0) return;
                     else
                     {
-                        fire_anim.SetBool("isSrZoom", true);
+                        if (zoom_x4Image.gameObject.activeSelf)
+                        {
+                            fire_anim.SetBool("isSrZoom", false);
+                            fire_anim.SetBool("isSrNoZoom", true);
+
+                            zoom_x4Image.gameObject.SetActive(false);
+                            this.GetComponent<Camera>().fieldOfView = 60;
+
+                        }
+                        else
+                        {
+                            fire_anim.SetBool("isSrZoom", true);
+                        }
                     }
 
                     break;
                 case 0:
-                    if (zoom_Image.gameObject.activeSelf)
-                    {
-                        fire_anim.SetBool("isGunZoom", false);
-                        zoom_Image.gameObject.SetActive(false);
-                        this.GetComponent<Camera>().fieldOfView += 10;
-                    }
+                    if (PlayerPrefs.GetFloat("GunSlot2", 0) == 0) return;
                     else
                     {
-                        fire_anim.SetBool("isGunZoom", true);
+                        if (zoom_Image.gameObject.activeSelf)
+                        {
+                            fire_anim.SetBool("isGunZoom", false);
+                            zoom_Image.gameObject.SetActive(false);
+                            this.GetComponent<Camera>().fieldOfView = 60;
+                        }
+                        else
+                        {
+                            fire_anim.SetBool("isGunZoom", true);
+                        }
                     }
+                    
                     break;
             }
         }
@@ -531,10 +577,10 @@ public class Player_Shot : MonoBehaviour
         currentCameraRotationX -= _cameraRotationX;
         currentCameraRotationX = Mathf.Clamp(currentCameraRotationX, -cameraRotationLimit, cameraRotationLimit);
 
-        adsadasd = Mathf.Lerp(adsadasd, 0, Time.deltaTime/adsadasd * 10);
+        recoil_Vertical = Mathf.Lerp(recoil_Vertical, 0, Time.deltaTime/ recoil_Vertical * 10);
 
 
-        this.transform.localEulerAngles = new Vector3(currentCameraRotationX - adsadasd, adsadasd2, 0f);
+        this.transform.localEulerAngles = new Vector3(currentCameraRotationX - recoil_Vertical, recoil_Horizontal, 0f);
 
     }
     void SwapWeapon()
@@ -547,16 +593,16 @@ public class Player_Shot : MonoBehaviour
             fire_anim.SetBool("isSrZoom", false);
             fire_anim.SetBool("isSrNoZoom", true);
 
+            this.GetComponent<Camera>().fieldOfView = 60;
+
             if (zoom_Image.gameObject.activeSelf)
             {
                 zoom_Image.gameObject.SetActive(false);
-                this.GetComponent<Camera>().fieldOfView += 10;
 
             }
             else if (zoom_x4Image.gameObject.activeSelf)
             {
                 zoom_x4Image.gameObject.SetActive(false);
-                this.GetComponent<Camera>().fieldOfView += 30;
             }
 
 
@@ -586,16 +632,16 @@ public class Player_Shot : MonoBehaviour
             fire_anim.SetBool("isSrZoom", false);
             fire_anim.SetBool("isSrNoZoom", true);
 
+            this.GetComponent<Camera>().fieldOfView = 60;
+
             if (zoom_Image.gameObject.activeSelf)
             {
                 zoom_Image.gameObject.SetActive(false);
-                this.GetComponent<Camera>().fieldOfView += 10;
 
             }
             else if (zoom_x4Image.gameObject.activeSelf)
             {
                 zoom_x4Image.gameObject.SetActive(false);
-                this.GetComponent<Camera>().fieldOfView += 30;
             }
 
 
@@ -627,16 +673,16 @@ public class Player_Shot : MonoBehaviour
             fire_anim.SetBool("isSrZoom", false);
             fire_anim.SetBool("isSrNoZoom", true);
 
+            this.GetComponent<Camera>().fieldOfView = 60;
+
             if (zoom_Image.gameObject.activeSelf)
             {
                 zoom_Image.gameObject.SetActive(false);
-                this.GetComponent<Camera>().fieldOfView += 10;
 
             }
             else if (zoom_x4Image.gameObject.activeSelf)
             {
                 zoom_x4Image.gameObject.SetActive(false);
-                this.GetComponent<Camera>().fieldOfView += 30;
             }
 
             fire_anim.SetTrigger("isGunSet");
