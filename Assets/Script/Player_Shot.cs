@@ -67,7 +67,7 @@ public class Player_Shot : MonoBehaviour
         fire_anim = anim_Gun.GetComponent<Animator>();
 
         lookSensitivity_V = PlayerPrefs.GetFloat("HorizontalSensitivity", 1.8f);
-
+        PlayerPrefs.SetFloat("SRSlot2", 8);
 
         //파츠 손잡이 적용
         fire_anim.SetFloat("ArReloadSpeed", PlayerPrefs.GetFloat("ARSlot3", 0) + 1.0f);

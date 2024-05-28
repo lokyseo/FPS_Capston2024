@@ -11,7 +11,11 @@ public class Parts_Porperty : MonoBehaviour
     public float rand_Property;
     public string parts_str, property_str;
 
-    public Sprite[] parts_Sprite = new Sprite[4];
+    public Sprite[] bullet_Sprite;
+    public Sprite[] bulletBox_Sprite;
+    public Sprite[] scope_Sprite;
+    public Sprite[] handle_Sprite;
+
 
     public int weaponType;
 
@@ -33,18 +37,23 @@ public class Parts_Porperty : MonoBehaviour
                     case 2: //¡∂¡ÿ¡°
                         parts_str = "¡∂¡ÿ∞Ê";
                         rand_Property = Random.Range(2, 4);
-                        if(rand_Property == 2)
+                        if (rand_Property == 2)
                         {
                             rand_Property = 2;
+                            this.GetComponent<Image>().sprite = scope_Sprite[0];
+
                         }
                         else
                         {
                             rand_Property = 4;
+                            this.GetComponent<Image>().sprite = scope_Sprite[1];
+
                         }
                         this.transform.tag = "Aim_Parts";
                         break;
                     case 3: //√—æÀ
                         parts_str = "√—æÀ";
+                        this.GetComponent<Image>().sprite = bullet_Sprite[weaponType];
                         rand_Property = Random.Range(2, 6);
                         this.transform.tag = "Bullet_Parts";
 
@@ -56,7 +65,7 @@ public class Parts_Porperty : MonoBehaviour
 
                         break;
                 }
-                this.GetComponent<Image>().color = Color.white;
+               // this.GetComponent<Image>().color = Color.white;
 
                 break;
             case 1:
@@ -70,6 +79,7 @@ public class Parts_Porperty : MonoBehaviour
                         break;
                     case 2: //¡∂¡ÿ¡°
                         parts_str = "¡∂¡ÿ∞Ê";
+                        this.GetComponent<Image>().sprite = scope_Sprite[weaponType];
                         rand_Property = Random.Range(2, 4);
                         if (rand_Property == 2)
                         {
@@ -83,6 +93,7 @@ public class Parts_Porperty : MonoBehaviour
                         break;
                     case 3: //√—æÀ
                         parts_str = "√—æÀ";
+                        this.GetComponent<Image>().sprite = bullet_Sprite[weaponType];
                         rand_Property = Random.Range(10, 31);
                         this.transform.tag = "Bullet_Parts";
 
@@ -95,7 +106,7 @@ public class Parts_Porperty : MonoBehaviour
                         break;
                 }
 
-                this.GetComponent<Image>().color = Color.black;
+                //this.GetComponent<Image>().color = Color.black;
 
                 break;
             case 2:
@@ -109,6 +120,7 @@ public class Parts_Porperty : MonoBehaviour
                         break;
                     case 2: //¡∂¡ÿ¡°
                         parts_str = "¡∂¡ÿ∞Ê";
+                        this.GetComponent<Image>().sprite = scope_Sprite[1];
                         rand_Property = Random.Range(2, 4);
                         if (rand_Property == 2)
                         {
@@ -122,15 +134,13 @@ public class Parts_Porperty : MonoBehaviour
                         break;
                     case 3: //√—æÀ
                         parts_str = "√—æÀ";
-                        //rand_Property = Mathf.Floor(Random.Range(1.0f, 2.0f) * 100f) / 100f;
+                        this.GetComponent<Image>().sprite = bullet_Sprite[weaponType];
                         rand_Property = Random.Range(3, 11);
 
                         this.transform.tag = "Bullet_Parts";
-                        
-
                         break;
                 }
-                this.GetComponent<Image>().color = Color.red;
+               // this.GetComponent<Image>().color = Color.red;
 
                 break;
         }

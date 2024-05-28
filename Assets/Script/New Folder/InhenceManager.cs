@@ -63,7 +63,7 @@ public class InhenceManager : MonoBehaviour
         {
             slot_Image[i] = slot_Type[0].transform.GetChild(i).GetComponent<Image>();
         }
-
+       
     }
 
     void Update()
