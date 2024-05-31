@@ -61,6 +61,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Lobby");
     }
 
+    public void Restart()
+    {
+        SceneManager.LoadScene("PunchKing");
+    }
+
     public void VerticalValueChanged()
     {
         //playermove_scr.lookSensitivity_V = vertical_Slider.value;
