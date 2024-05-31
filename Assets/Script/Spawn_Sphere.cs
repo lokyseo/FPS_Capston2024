@@ -48,7 +48,7 @@ public class Spawn_Sphere : MonoBehaviour
             count_Spawn = 20;
             count_Score = 0;
             StopCoroutine("ReadyToStart");
-            this.GetComponent<Renderer>().material.color = Color.green;
+            //this.GetComponent<Renderer>().material.color = Color.green;
 
         }
 
@@ -71,7 +71,7 @@ public class Spawn_Sphere : MonoBehaviour
                 else
                 {
                     count_Spawn = 20;
-                    this.GetComponent<Renderer>().material.color = Color.green;
+                    //this.GetComponent<Renderer>().material.color = Color.green;
                     isSpawnStart = false;
                     isReady = false;
                     timeText.text = "";

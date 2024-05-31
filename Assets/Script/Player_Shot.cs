@@ -122,20 +122,20 @@ public class Player_Shot : MonoBehaviour
                             hitData.transform.GetComponent<Spawn_Sphere>().isReady = false;
                             hitData.transform.GetComponent<Spawn_Sphere>().isSpawnStart = false;
 
-                            hitData.transform.GetComponent<Renderer>().material.color = Color.green;
+                            //hitData.transform.GetComponent<Renderer>().material.color = Color.green;
                         }
                         else//시작함
                         {
                             hitData.transform.GetComponent<Spawn_Sphere>().isReady = true;
 
-                            hitData.transform.GetComponent<Renderer>().material.color = Color.red;
+                            //hitData.transform.GetComponent<Renderer>().material.color = Color.red;
 
                         }
                     }
 
                     if (hitData.transform.tag == "LevelTrigger")
                     {
-                        hitData.transform.GetComponent<Renderer>().material.color = Color.black;
+                        //hitData.transform.GetComponent<Renderer>().material.color = Color.black;
 
                         switch (hitData.transform.name)
                         {
@@ -248,13 +248,13 @@ public class Player_Shot : MonoBehaviour
                             hitData.transform.GetComponent<Spawn_Sphere>().isReady = false;
                             hitData.transform.GetComponent<Spawn_Sphere>().isSpawnStart = false;
 
-                            hitData.transform.GetComponent<Renderer>().material.color = Color.green;
+                            //hitData.transform.GetComponent<Renderer>().material.color = Color.green;
                         }
                         else//시작함
                         {
                             hitData.transform.GetComponent<Spawn_Sphere>().isReady = true;
 
-                            hitData.transform.GetComponent<Renderer>().material.color = Color.red;
+                            //hitData.transform.GetComponent<Renderer>().material.color = Color.red;
 
                         }
                     }
