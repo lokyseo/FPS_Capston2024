@@ -60,6 +60,8 @@ public class Parts_Porperty : MonoBehaviour
                         break;
                     case 4: //손잡이
                         parts_str = "손잡이";
+                        this.GetComponent<Image>().sprite = handle_Sprite[weaponType];
+
                         rand_Property = Mathf.Floor(Random.Range(0.01f, 1.0f) * 100f) / 100f;
                         this.transform.tag = "handle_Parts";
 
@@ -100,6 +102,7 @@ public class Parts_Porperty : MonoBehaviour
                         break;
                     case 4: //손잡이
                         parts_str = "손잡이";
+                        this.GetComponent<Image>().sprite = handle_Sprite[weaponType];
                         rand_Property = Mathf.Floor(Random.Range(0.01f, 1.0f) * 100f) / 100f;
                         this.transform.tag = "handle_Parts";
 

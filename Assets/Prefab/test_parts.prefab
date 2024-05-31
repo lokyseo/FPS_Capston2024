@@ -128,5 +128,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 16a8649909066fa48b1dfeae8cca95af, type: 3}
   - {fileID: 21300000, guid: 82632a0de9919fb4eae7fcd10795234a, type: 3}
   handle_Sprite:
+  - {fileID: 21300000, guid: bed06db277159924298e7a2659491aa1, type: 3}
   - {fileID: 21300000, guid: 6469fcb4a135c4640994d7f37a58926d, type: 3}
   weaponType: 0

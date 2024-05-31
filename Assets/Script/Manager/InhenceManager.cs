@@ -16,7 +16,7 @@ public class InhenceManager : MonoBehaviour
     public GameObject[] slot_Type;
     Image[] slot_Image = new Image[4]; // 슬롯 이미지
 
-    public float[] basic_slider_Value = new float[4]; // 슬라이더 초기값
+    float[] basic_slider_Value = new float[4]; // 슬라이더 초기값
     float[] temp_slider_Value = new float[4]; // 임시 데이터값
 
     public GameObject[] weapon_array;

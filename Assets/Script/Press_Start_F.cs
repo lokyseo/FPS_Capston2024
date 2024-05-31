@@ -12,13 +12,13 @@ public class Press_Start_F : MonoBehaviour
 
     public GameObject f_Image;
     public GameObject reward_window;
-
-    float timeCount;
     public Text time_Text;
+    public Text score_Text;
+    float timeCount;
 
     void Start()
     {
-        timeCount = 60;
+        timeCount = 10;
         isReadyToStart = false;
         isPressF = false;
         isGameFinish = false;
@@ -33,6 +33,11 @@ public class Press_Start_F : MonoBehaviour
         if (isGameFinish)
         {
             reward_window.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            time_Text.text = "Time : 00.00";
+            score_Text.text = "Score : " + PunchKingManager.curScore;
 
             return;
         }
