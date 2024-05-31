@@ -7,11 +7,12 @@ using Cinemachine;
 
 public class LobbyButtonCtl : MonoBehaviour, IPointerEnterHandler,IPointerExitHandler
 {
-    public CinemachineFreeLook ButtonCamera;
+    public CinemachineVirtualCamera ButtonCamera;
 
     // Start is called before the first frame update
     void Start()
     {
+        ButtonCamera.Priority = 0;
     }
 
     // Update is called once per frame

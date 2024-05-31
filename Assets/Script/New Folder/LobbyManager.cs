@@ -7,16 +7,10 @@ using UnityEngine.EventSystems;
 
 public class LobbyManager : MonoBehaviour
 {
-    public CinemachineFreeLook mainMapCamera;
-    public CinemachineFreeLook punchKingMapCamera;
-    public int checkPriority;
-    public float checkTime;
 
     void Start()
     {
-        checkTime = 0;
-        mainMapCamera.Priority = 0;
-        punchKingMapCamera.Priority = 0;
+        
     }
 
     // Update is called once per frame
