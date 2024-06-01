@@ -15,13 +15,30 @@ public class Press_Start_F : MonoBehaviour
     public Text time_Text;
     public Text score_Text;
     float timeCount;
+    public Slider score_Slider;
 
+    bool[] isRewardGived = new bool[5];
+
+    public GameObject parts_Image;
+
+
+    public void CreateParts()
+    {
+       
+    }
     void Start()
     {
+        for(int i = 0; i < isRewardGived.Length; i++)
+        {
+            isRewardGived[i] = false;
+        }
+        PlayerPrefs.DeleteAll();
+
         timeCount = 10;
         isReadyToStart = false;
         isPressF = false;
         isGameFinish = false;
+        score_Slider.value = PlayerPrefs.GetFloat("PunchKingScore", 0);
 
         f_Image.SetActive(false);
         reward_window.SetActive(false); 
@@ -38,6 +55,32 @@ public class Press_Start_F : MonoBehaviour
 
             time_Text.text = "Time : 00.00";
             score_Text.text = "Score : " + PunchKingManager.curScore;
+            score_Slider.value += PunchKingManager.curScore;
+            PlayerPrefs.SetFloat("PunchKingScore", score_Slider.value + PunchKingManager.curScore);
+
+            for ( int i = 0; i < isRewardGived.Length;)
+            {
+                if (isRewardGived[i])
+                {
+                    i++;
+                }
+                else
+                {
+                    if (score_Slider.value >= 200 * (i + 1))
+                    {
+                        //GameObject temp = Instantiate(parts_Image);
+                        Save_Slot.createCount++;
+                        isRewardGived[i] = true;
+                        i++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                
+            }
+            isGameFinish = false;
 
             return;
         }

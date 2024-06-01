@@ -16,7 +16,10 @@ public class Parts_Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     [SerializeField]
     Transform onDragParent;
 
+    private void Awake()
+    {
 
+    }
 
     void Start()
     {
@@ -25,6 +28,8 @@ public class Parts_Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     void Update()
     {
+        onDragParent = GameObject.Find("DragBG").transform;
+
     }
 
     public void OnBeginDrag(PointerEventData eventData)

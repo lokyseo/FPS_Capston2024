@@ -149,4 +149,6 @@ public class Parts_Porperty : MonoBehaviour
         }
        
     }
+
+    
 }

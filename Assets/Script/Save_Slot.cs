@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Save_Slot : MonoBehaviour
 {
     private static bool hasInstance = false;
+    public static float createCount = 0;
+
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;

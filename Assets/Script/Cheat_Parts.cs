@@ -6,15 +6,24 @@ public class Cheat_Parts : MonoBehaviour
 {
     public GameObject parts;
     public GameObject slot_first;
-    void Start()
+    void OnEnable()
     {
-        
+        for (int i = 0; i < Save_Slot.createCount; i++)
+        {
+            CreateParts();
+        }
     }
 
+    void OnDisable()
+    {
+        Save_Slot.createCount = 0;
+
+    }
     void Update()
     {
         
     }
+
 
     public void CreateParts()
     {
@@ -33,5 +42,7 @@ public class Cheat_Parts : MonoBehaviour
                 i++;
             }
         }
+        //Debug.Log("adgnsduognasliopgasd");
+
     }
 }
