@@ -48,6 +48,7 @@ public class Spawn_Sphere : MonoBehaviour
             count_Spawn = 20;
             count_Score = 0;
             StopCoroutine("ReadyToStart");
+            timeText.text = "";
             //this.GetComponent<Renderer>().material.color = Color.green;
 
         }
@@ -65,7 +66,7 @@ public class Spawn_Sphere : MonoBehaviour
                 {
 
                     Instantiate(target_Sphere,
-                        new Vector3(Random.Range(-15.0f, 15.0f), Random.Range(0, 10.0f), transform.position.z), Quaternion.identity);
+                        new Vector3(Random.Range(-14.0f, 14.0f), Random.Range(1, 9.0f), transform.position.z), Quaternion.identity);
                     spawnInterval = spawnLevel;
                 }
                 else
