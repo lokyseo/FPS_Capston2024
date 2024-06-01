@@ -24,6 +24,10 @@ public class InhenceManager : MonoBehaviour
 
     public Text[] slider_value_text;
 
+    //버튼사운드
+    public GameObject btnSound;
+    AudioSource audioSourceBtn;
+
     //0 : AR, 1 : SR, 2 : Gun     총알 탄창 조준경 손잡이
 
     void Start()
@@ -31,6 +35,7 @@ public class InhenceManager : MonoBehaviour
          PlayerPrefs.DeleteAll();
 
         weaponType = 0;
+        audioSourceBtn = btnSound.GetComponent<AudioSource>();
         isChangedParts = false;
         //초기화
 
@@ -323,5 +328,10 @@ public class InhenceManager : MonoBehaviour
         SceneManager.LoadScene("Lobby");
     }
 
+
+    public void SetBtnSound()
+    {
+        audioSourceBtn.Play();
+    }
   
 }
