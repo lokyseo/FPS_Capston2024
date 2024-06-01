@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviour
 {
-
     void Start()
     {
         

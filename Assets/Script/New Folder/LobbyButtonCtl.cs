@@ -8,10 +8,13 @@ using Cinemachine;
 public class LobbyButtonCtl : MonoBehaviour, IPointerEnterHandler,IPointerExitHandler
 {
     public CinemachineVirtualCamera ButtonCamera;
+    AudioSource audioSource;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = this.gameObject.GetComponent<AudioSource>();
         ButtonCamera.Priority = 0;
     }
 
@@ -24,6 +27,7 @@ public class LobbyButtonCtl : MonoBehaviour, IPointerEnterHandler,IPointerExitHa
     public void OnPointerEnter(PointerEventData eventData)
     {
         ButtonCamera.Priority = 1;
+        audioSource.Play();
     }
 
     public void OnPointerExit(PointerEventData eventData)
