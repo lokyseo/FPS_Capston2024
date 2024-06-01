@@ -27,6 +27,11 @@ public class Player_Shot : MonoBehaviour
     public ParticleSystem srFire;
     Animator fire_anim;
 
+    [Header("총기사운드")]
+    public AudioSource glockShot;
+    public AudioSource arShot;
+    public AudioSource srShot;
+
     [Header("펀치킹")]
     public Text textScore;
 
@@ -109,6 +114,7 @@ public class Player_Shot : MonoBehaviour
                 recoil_Vertical += 5.0f;
                 recoil_Horizontal = Random.Range(-0.2f, 0.21f);
                 gunFire.Play();
+                glockShot.Play();
 
                 Ray ray = new Ray(transform.position, transform.forward);
                 RaycastHit hitData;
@@ -230,11 +236,11 @@ public class Player_Shot : MonoBehaviour
                     fire_anim.SetTrigger("isArShot");
                 }
 
-                //반동
+                //반동+총기 소리
                 recoil_Vertical += 2.0f;
                 recoil_Horizontal = Random.Range(-0.2f, 0.21f);
                 arFire.Play();
-
+                arShot.Play();//총기소리
                 Ray ray = new Ray(transform.position, transform.forward);
                 RaycastHit hitData;
 
@@ -373,6 +379,7 @@ public class Player_Shot : MonoBehaviour
                 recoil_Vertical += 10.0f;
                 recoil_Horizontal = Random.Range(-0.2f, 0.21f);
                 srFire.Play();
+                srShot.Play();
 
                 Ray ray = new Ray(transform.position, transform.forward);
                 RaycastHit hitData;
