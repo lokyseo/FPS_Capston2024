@@ -7,6 +7,8 @@ public class Spawn_Sphere : MonoBehaviour
 {
     [SerializeField] Text timeText;
     public GameObject target_Sphere;
+    public GameObject soundobj;
+    AudioSource audioSource;
 
     int count_Spawn;
     public int count_Score;
@@ -21,6 +23,7 @@ public class Spawn_Sphere : MonoBehaviour
 
     void Start()
     {
+        audioSource=soundobj.GetComponent<AudioSource>();
         timeText.text = "";
         count_Spawn = 20;
         count_Score = 0;
@@ -88,6 +91,7 @@ public class Spawn_Sphere : MonoBehaviour
 
     IEnumerator ReadyToStart()
     {
+        audioSource.Play();
         iscoroutine = true;
 
         timeText.text = "";
@@ -101,7 +105,6 @@ public class Spawn_Sphere : MonoBehaviour
         timeText.text = "Start";
         yield return new WaitForSeconds(1.0f);
         timeText.text = "점수 : 0\t 남음 : 20";
-
 
         isSpawnStart = true;
 
