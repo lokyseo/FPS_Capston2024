@@ -9,7 +9,7 @@ public class Slot_Drag : MonoBehaviour, IDropHandler
     public GameObject manager;
     public int weaponType;
     // weaponType = manager.GetComponent<InhenceManager>().weaponType;
-
+    public AudioSource audioSource;
 
     void Update()
     {
@@ -38,6 +38,7 @@ public class Slot_Drag : MonoBehaviour, IDropHandler
                     Parts_Drag.saveGameObject.transform.SetParent(this.transform.parent.GetChild(i).transform);
                     Parts_Drag.saveGameObject.transform.position = this.transform.parent.GetChild(i).position;
                     InhenceManager.isChangedParts = true;
+                    audioSource.Play();
                     break;
                 }
                 else
@@ -55,6 +56,8 @@ public class Slot_Drag : MonoBehaviour, IDropHandler
                 {
                     Parts_Drag.saveGameObject.transform.SetParent(this.transform);
                     Parts_Drag.saveGameObject.transform.position = transform.position;
+                    audioSource.Play();
+
                     InhenceManager.isChangedParts = true;
                 }
 
@@ -69,6 +72,7 @@ public class Slot_Drag : MonoBehaviour, IDropHandler
 
                     Parts_Drag.saveGameObject.transform.SetParent(this.transform);
                     Parts_Drag.saveGameObject.transform.position = transform.position;
+                    audioSource.Play();
 
                     InhenceManager.isChangedParts = true;
                 }

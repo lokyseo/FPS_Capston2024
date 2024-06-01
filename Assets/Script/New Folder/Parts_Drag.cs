@@ -23,7 +23,7 @@ public class Parts_Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     void Start()
     {
-        
+
     }
 
     void Update()
