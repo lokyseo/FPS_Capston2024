@@ -31,6 +31,8 @@ public class Parts_Porperty : MonoBehaviour
                 {
                     case 1: //źâ
                         parts_str = "źâ";
+                        this.GetComponent<Image>().sprite = bulletBox_Sprite[weaponType];
+
                         rand_Property = Random.Range(5, 16);
                         this.transform.tag = "BulletBox_Parts";
                         break;
@@ -76,6 +78,7 @@ public class Parts_Porperty : MonoBehaviour
                 {
                     case 1: //źâ
                         parts_str = "źâ";
+                        this.GetComponent<Image>().sprite = bulletBox_Sprite[weaponType];
                         rand_Property = Random.Range(1, 4);
                         this.transform.tag = "BulletBox_Parts";
                         break;
@@ -118,6 +121,7 @@ public class Parts_Porperty : MonoBehaviour
                 {
                     case 1: //źâ
                         parts_str = "źâ";
+                        this.GetComponent<Image>().sprite = bulletBox_Sprite[weaponType];
                         rand_Property = Random.Range(2, 8);
                         this.transform.tag = "BulletBox_Parts";
                         break;

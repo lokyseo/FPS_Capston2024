@@ -124,7 +124,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 375d891fb9a2de84c90c69707e2f3dc6, type: 3}
   - {fileID: 21300000, guid: a1d24eacc1f28be45a2eaa222a086a87, type: 3}
   - {fileID: 21300000, guid: 9225bb93c57c00b4aa83a2747e956c9c, type: 3}
-  bulletBox_Sprite: []
+  bulletBox_Sprite:
+  - {fileID: 21300000, guid: bd21052df1eeed0448af9ba30b38cafb, type: 3}
+  - {fileID: 21300000, guid: 21dee7aa65f7cdf40a6906cd94372f19, type: 3}
+  - {fileID: 21300000, guid: 7aeeebebafa0a414ca4ff93ff7854669, type: 3}
   scope_Sprite:
   - {fileID: 21300000, guid: 16a8649909066fa48b1dfeae8cca95af, type: 3}
   - {fileID: 21300000, guid: 82632a0de9919fb4eae7fcd10795234a, type: 3}
