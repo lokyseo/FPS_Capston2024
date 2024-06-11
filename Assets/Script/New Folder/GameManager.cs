@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene("PunchKing");
+        PlayerPrefs.SetFloat("PunchKingScore", 0);
     }
 
     public void VerticalValueChanged()

@@ -18,9 +18,9 @@ public class Press_Start_F : MonoBehaviour
     public Slider score_Slider;
 
     bool[] isRewardGived = new bool[5];
-
+    public Image[] reward_image;
     public GameObject parts_Image;
-
+    public Text reward_Text;
 
     public void CreateParts()
     {
@@ -32,9 +32,8 @@ public class Press_Start_F : MonoBehaviour
         {
             isRewardGived[i] = false;
         }
-        PlayerPrefs.DeleteAll();
 
-        timeCount = 10;
+        timeCount = 20;
         isReadyToStart = false;
         isPressF = false;
         isGameFinish = false;
@@ -62,6 +61,7 @@ public class Press_Start_F : MonoBehaviour
             {
                 if (isRewardGived[i])
                 {
+                    reward_image[i].GetComponent<Image>().color = Color.green;
                     i++;
                 }
                 else
@@ -69,6 +69,7 @@ public class Press_Start_F : MonoBehaviour
                     if (score_Slider.value >= 200 * (i + 1))
                     {
                         //GameObject temp = Instantiate(parts_Image);
+                        reward_image[i].GetComponent<Image>().color = Color.green;
                         Save_Slot.createCount++;
                         isRewardGived[i] = true;
                         i++;
@@ -78,7 +79,9 @@ public class Press_Start_F : MonoBehaviour
                         break;
                     }
                 }
-                
+                reward_Text.text = "ÆÄÃ÷ " + i + "°³ »ý¼º";
+
+
             }
             isGameFinish = false;
 

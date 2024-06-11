@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8979,8 +8979,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4bc23c2e6d21794f8fa3dfb1ec04c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomx_Image: {fileID: 0}
-  zoomx4_Image: {fileID: 0}
+  zoomx_Image: {fileID: 1515942786}
+  zoomx4_Image: {fileID: 788502326}
   testCamera: {fileID: 688504411}
 --- !u!95 &564951925
 Animator:
